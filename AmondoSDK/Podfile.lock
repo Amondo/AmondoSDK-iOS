@@ -1,0 +1,59 @@
+PODS:
+  - Alamofire (4.8.2)
+  - Apollo (0.24.0):
+    - Apollo/Core (= 0.24.0)
+  - Apollo/Core (0.24.0)
+  - Cloudinary (2.7.0):
+    - Alamofire (~> 4.8.2)
+  - FacebookCore (0.8.0):
+    - FBSDKCoreKit (~> 5.0)
+  - FacebookShare (0.8.0):
+    - FacebookCore (~> 0.8.0)
+    - FBSDKCoreKit (~> 5.0)
+    - FBSDKShareKit (~> 5.0)
+  - FBSDKCoreKit (5.4.0):
+    - FBSDKCoreKit/Basics (= 5.4.0)
+    - FBSDKCoreKit/Core (= 5.4.0)
+  - FBSDKCoreKit/Basics (5.4.0)
+  - FBSDKCoreKit/Core (5.4.0):
+    - FBSDKCoreKit/Basics
+  - FBSDKShareKit (5.4.0):
+    - FBSDKCoreKit (~> 5.0)
+  - Intercom (5.4.1)
+  - KeychainSwift (16.0.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.4)
+  - Apollo
+  - Cloudinary
+  - FacebookShare
+  - Intercom
+  - KeychainSwift
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - Alamofire
+    - Cloudinary
+    - FacebookCore
+    - FacebookShare
+    - FBSDKCoreKit
+    - FBSDKShareKit
+    - Intercom
+    - KeychainSwift
+  trunk:
+    - Apollo
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  Apollo: ef7cf21a5f599c98a8699243f6a9922466405669
+  Cloudinary: d9b2d7d7692a6deb51227fa9f4e7cf8f49d6c375
+  FacebookCore: 563bb4cbcd7dd86cf89f3729252140bf256aacaa
+  FacebookShare: e75d5e81ef7bd7aab2f865446c4c27015b43bae6
+  FBSDKCoreKit: 026e56cf2c2cebc656cf2aec5c6898b8c4f33930
+  FBSDKShareKit: 49e5cd98c7dfe09f8c536a773574e370bd523fbc
+  Intercom: d189cf8cc8591e7e63dbb10ee4401a70a7fdc9d6
+  KeychainSwift: 4209611373ca4a098e09b1e547eebd87c544dcc4
+
+PODFILE CHECKSUM: 44f1c03e5cf3c58333cea9039ae232cd1b34b1fb
+
+COCOAPODS: 1.8.4

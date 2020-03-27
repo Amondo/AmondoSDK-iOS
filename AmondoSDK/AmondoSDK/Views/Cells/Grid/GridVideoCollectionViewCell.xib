@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="gTV-IL-0wX" customClass="GridVideoCollectionViewCell" customModule="AmondoSDK">
+            <rect key="frame" x="0.0" y="0.0" width="136" height="133"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="136" height="133"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T8C-T3-Drh" userLabel="wrapper">
+                        <rect key="frame" x="0.0" y="0.0" width="136" height="133"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4RQ-42-f80" userLabel="player_wrapper">
+                                <rect key="frame" x="0.0" y="0.0" width="136" height="133"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S3p-wJ-Uyt">
+                                <rect key="frame" x="0.0" y="0.0" width="136" height="133"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="pqy-c3-9mI">
+                                    <rect key="frame" x="0.0" y="0.0" width="136" height="133"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="S3p-wJ-Uyt" firstAttribute="top" secondItem="T8C-T3-Drh" secondAttribute="top" id="0RV-eZ-jP3"/>
+                            <constraint firstItem="4RQ-42-f80" firstAttribute="top" secondItem="T8C-T3-Drh" secondAttribute="top" id="DK9-61-H48"/>
+                            <constraint firstItem="4RQ-42-f80" firstAttribute="leading" secondItem="T8C-T3-Drh" secondAttribute="leading" id="GBb-1Y-u9p"/>
+                            <constraint firstAttribute="trailing" secondItem="4RQ-42-f80" secondAttribute="trailing" id="IHm-Qu-zqA"/>
+                            <constraint firstAttribute="bottom" secondItem="4RQ-42-f80" secondAttribute="bottom" id="OSC-RC-Sc4"/>
+                            <constraint firstItem="S3p-wJ-Uyt" firstAttribute="leading" secondItem="T8C-T3-Drh" secondAttribute="leading" id="ctB-50-3Ly"/>
+                            <constraint firstAttribute="bottom" secondItem="S3p-wJ-Uyt" secondAttribute="bottom" id="oQz-tb-j0X"/>
+                            <constraint firstAttribute="trailing" secondItem="S3p-wJ-Uyt" secondAttribute="trailing" id="tql-u3-90x"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="T8C-T3-Drh" secondAttribute="trailing" id="ApQ-fr-bHd"/>
+                <constraint firstItem="T8C-T3-Drh" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Xgd-rg-qa6"/>
+                <constraint firstItem="T8C-T3-Drh" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="drA-hP-Orj"/>
+                <constraint firstAttribute="bottom" secondItem="T8C-T3-Drh" secondAttribute="bottom" id="ltn-se-NHn"/>
+            </constraints>
+            <size key="customSize" width="136" height="133"/>
+            <connections>
+                <outlet property="viewAudioVideoPlayerWrapper" destination="4RQ-42-f80" id="YF1-XE-L57"/>
+                <outlet property="viewWrapper" destination="T8C-T3-Drh" id="AYl-7Q-pcY"/>
+                <outlet property="visualEffectViewBlur" destination="S3p-wJ-Uyt" id="yTK-hS-sYM"/>
+            </connections>
+            <point key="canvasLocation" x="108" y="95.5"/>
+        </collectionViewCell>
+    </objects>
+</document>

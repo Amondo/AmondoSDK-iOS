@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Regular.otf">
+            <string>SFProText-Regular</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellContributeMedia" id="hLQ-j1-kPl" customClass="ContributeMediaCollectionViewCell" customModule="AmondoSDK">
+            <rect key="frame" x="0.0" y="0.0" width="98" height="121"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="98" height="121"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UCI-UB-VHk" userLabel="wrapper">
+                        <rect key="frame" x="0.0" y="0.0" width="98" height="121"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tof-EL-l9d">
+                                <rect key="frame" x="0.0" y="0.0" width="98" height="121"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="media-selected" translatesAutoresizingMaskIntoConstraints="NO" id="zIV-Cf-sbX">
+                                <rect key="frame" x="64" y="10" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="5Ry-EP-UXx"/>
+                                    <constraint firstAttribute="width" constant="24" id="G3W-Ct-C0u"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rl7-Vq-gxJ">
+                                <rect key="frame" x="58" y="95" width="30" height="14"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="14" id="JcR-3J-0U7"/>
+                                    <constraint firstAttribute="width" constant="30" id="Vip-i2-F1K"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SFProText-Regular" family="SF Pro Text" pointSize="10"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Tof-EL-l9d" firstAttribute="top" secondItem="UCI-UB-VHk" secondAttribute="top" id="2AE-yi-TQ3"/>
+                            <constraint firstItem="zIV-Cf-sbX" firstAttribute="top" secondItem="UCI-UB-VHk" secondAttribute="top" constant="10" id="65A-Q9-uMJ"/>
+                            <constraint firstAttribute="bottom" secondItem="Tof-EL-l9d" secondAttribute="bottom" id="DRo-Mt-78f"/>
+                            <constraint firstAttribute="trailing" secondItem="rl7-Vq-gxJ" secondAttribute="trailing" constant="10" id="RcC-4a-Jxc"/>
+                            <constraint firstAttribute="trailing" secondItem="zIV-Cf-sbX" secondAttribute="trailing" constant="10" id="Uaa-pC-PIa"/>
+                            <constraint firstAttribute="bottom" secondItem="rl7-Vq-gxJ" secondAttribute="bottom" constant="12" id="X2z-iw-aWs"/>
+                            <constraint firstItem="Tof-EL-l9d" firstAttribute="leading" secondItem="UCI-UB-VHk" secondAttribute="leading" id="Zkn-Ba-Ryz"/>
+                            <constraint firstAttribute="trailing" secondItem="Tof-EL-l9d" secondAttribute="trailing" id="ye4-PE-Pyq"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="UCI-UB-VHk" secondAttribute="bottom" id="AWo-dw-RyY"/>
+                <constraint firstItem="UCI-UB-VHk" firstAttribute="leading" secondItem="hLQ-j1-kPl" secondAttribute="leading" id="DN6-TQ-U3o"/>
+                <constraint firstAttribute="trailing" secondItem="UCI-UB-VHk" secondAttribute="trailing" id="hPM-cc-jgz"/>
+                <constraint firstItem="UCI-UB-VHk" firstAttribute="top" secondItem="hLQ-j1-kPl" secondAttribute="top" id="x7w-Fh-dJT"/>
+            </constraints>
+            <size key="customSize" width="98" height="121"/>
+            <connections>
+                <outlet property="imageViewSelected" destination="zIV-Cf-sbX" id="jik-RT-kbj"/>
+                <outlet property="imageViewThumb" destination="Tof-EL-l9d" id="JMh-at-VSE"/>
+                <outlet property="labelVideoDuration" destination="rl7-Vq-gxJ" id="6cx-Fs-gwg"/>
+            </connections>
+            <point key="canvasLocation" x="58" y="89.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="media-selected" width="24" height="24"/>
+    </resources>
+</document>

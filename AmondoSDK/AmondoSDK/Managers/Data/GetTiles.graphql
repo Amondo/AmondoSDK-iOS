@@ -1,0 +1,38 @@
+query GetTiles($imprintId: ID!) {
+    tiles(imprintId: $imprintId){
+        id
+        username
+        url
+        location
+        description
+        likes
+        commentCount
+        source
+        sourceId
+        type
+        date
+        verified
+        avatar {
+            width
+            height
+            secureUrl
+            resourceType
+            type
+            version
+            publicId
+            format
+            originalUrl
+        }
+        file {
+            width
+            height
+            secureUrl
+            resourceType
+            type
+            version
+            publicId
+            format
+            originalUrl
+        }
+    }
+}

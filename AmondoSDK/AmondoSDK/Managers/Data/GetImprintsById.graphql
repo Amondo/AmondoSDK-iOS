@@ -1,0 +1,25 @@
+query GetImprintsById($ids: [ID]) {
+    imprints(where: {ids: $ids}) {
+        id
+        artist
+        startDate
+        endDate
+        createdAt
+        updatedAt
+        locationRadius
+        location
+        geoPoint {
+            latitude
+            longitude
+        }
+        image {
+          url
+          type
+          width
+          height
+          publicId
+          format
+          version
+        }
+    }
+}

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cellGridScroller" id="H0L-1w-GRu" customClass="GridScrollerCollectionViewCell" customModule="AmondoSDK">
+            <rect key="frame" x="0.0" y="0.0" width="208" height="195"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                <rect key="frame" x="0.0" y="0.0" width="208" height="195"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PUs-bc-fdc" userLabel="wrapper">
+                        <rect key="frame" x="0.0" y="0.0" width="208" height="195"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="sub-dR-MEg">
+                                <rect key="frame" x="0.0" y="0.0" width="208" height="195"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="2" minimumInteritemSpacing="4" id="SDY-7o-z1Y">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <connections>
+                                    <outlet property="dataSource" destination="H0L-1w-GRu" id="x9o-vp-dzx"/>
+                                    <outlet property="delegate" destination="H0L-1w-GRu" id="8tA-wT-EUH"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="sub-dR-MEg" secondAttribute="trailing" id="Aw6-ur-Iqg"/>
+                            <constraint firstItem="sub-dR-MEg" firstAttribute="leading" secondItem="PUs-bc-fdc" secondAttribute="leading" id="BoV-dX-I03"/>
+                            <constraint firstItem="sub-dR-MEg" firstAttribute="top" secondItem="PUs-bc-fdc" secondAttribute="top" id="UZg-eK-gHx"/>
+                            <constraint firstAttribute="bottom" secondItem="sub-dR-MEg" secondAttribute="bottom" id="V32-eA-3eY"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="PUs-bc-fdc" secondAttribute="trailing" id="6PB-8d-IfF"/>
+                <constraint firstItem="PUs-bc-fdc" firstAttribute="leading" secondItem="H0L-1w-GRu" secondAttribute="leading" id="Dfn-pk-QRt"/>
+                <constraint firstItem="PUs-bc-fdc" firstAttribute="top" secondItem="H0L-1w-GRu" secondAttribute="top" id="eol-6n-7Mf"/>
+                <constraint firstAttribute="bottom" secondItem="PUs-bc-fdc" secondAttribute="bottom" id="iI1-lt-JiO"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="MwA-io-hle"/>
+            <size key="customSize" width="208" height="195"/>
+            <connections>
+                <outlet property="collectionViewItems" destination="sub-dR-MEg" id="NXC-3e-KZn"/>
+            </connections>
+            <point key="canvasLocation" x="264" y="210.04497751124438"/>
+        </collectionViewCell>
+    </objects>
+</document>

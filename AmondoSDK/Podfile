@@ -1,0 +1,17 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '10.0'
+
+target 'AmondoSDK' do
+  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for AmondoSDK
+
+    pod 'Alamofire', '~> 4.4'
+    pod 'KeychainSwift'
+    pod 'Cloudinary'#, '~> 2.0'
+    pod 'Intercom'
+    pod 'FacebookShare'
+    pod 'Apollo'
+    
+end

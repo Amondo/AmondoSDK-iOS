@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="SF-Pro-Text-Semibold.otf">
+            <string>SFProText-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NavigationBarView" customModule="Amondo" customModuleProvider="target">
+            <connections>
+                <outlet property="buttonBack" destination="tdH-bg-RCj" id="uzx-6y-Zfa"/>
+                <outlet property="labelTitle" destination="opR-LJ-m27" id="QqT-s9-Pqd"/>
+                <outlet property="viewContent" destination="iN0-l3-epB" id="gZj-Wl-Xx7"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dam-q8-6fK" userLabel="top">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tdH-bg-RCj">
+                            <rect key="frame" x="8" y="5" width="80" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="T7i-Hl-kIR"/>
+                                <constraint firstAttribute="width" constant="80" id="d0B-MJ-cZ8"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
+                            <state key="normal" title="Back" image="arrow-left-dark">
+                                <color key="titleColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="actionBack" destination="-1" eventType="touchUpInside" id="bVg-7j-oLA"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="opR-LJ-m27">
+                            <rect key="frame" x="80" y="14" width="215" height="22"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="22" id="zSo-II-jW5"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="SFProText-Semibold" family="SF Pro Text" pointSize="15"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="opR-LJ-m27" firstAttribute="leading" secondItem="dam-q8-6fK" secondAttribute="leading" constant="80" id="Djv-M8-zuU"/>
+                        <constraint firstItem="opR-LJ-m27" firstAttribute="centerY" secondItem="dam-q8-6fK" secondAttribute="centerY" id="QWI-9p-8FV"/>
+                        <constraint firstItem="tdH-bg-RCj" firstAttribute="leading" secondItem="dam-q8-6fK" secondAttribute="leading" constant="8" id="YDG-Ly-gH6"/>
+                        <constraint firstItem="tdH-bg-RCj" firstAttribute="centerY" secondItem="opR-LJ-m27" secondAttribute="centerY" id="fkc-Uk-9U8"/>
+                        <constraint firstAttribute="trailing" secondItem="opR-LJ-m27" secondAttribute="trailing" constant="80" id="gLk-C8-26g"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="eog-iX-PTP"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="dam-q8-6fK" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="VW8-Z9-kgO"/>
+                <constraint firstItem="dam-q8-6fK" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="cxZ-Z1-xHn"/>
+                <constraint firstItem="dam-q8-6fK" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="jtQ-qK-QV5"/>
+                <constraint firstItem="dam-q8-6fK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xeG-T7-sto"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrow-left-dark" width="24" height="24"/>
+    </resources>
+</document>

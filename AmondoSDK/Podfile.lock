@@ -1,8 +1,8 @@
 PODS:
   - Alamofire (4.8.2)
-  - Apollo (0.24.0):
-    - Apollo/Core (= 0.24.0)
-  - Apollo/Core (0.24.0)
+  - Apollo (0.18.1):
+    - Apollo/Core (= 0.18.1)
+  - Apollo/Core (0.18.1)
   - Cloudinary (2.7.0):
     - Alamofire (~> 4.8.2)
   - FacebookCore (0.8.0):
@@ -24,7 +24,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.4)
-  - Apollo
+  - Apollo (= 0.18.1)
   - Cloudinary
   - FacebookShare
   - Intercom
@@ -45,7 +45,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
-  Apollo: ef7cf21a5f599c98a8699243f6a9922466405669
+  Apollo: 03f2ad1b6de18727bf443fd00e1963487a2972d3
   Cloudinary: d9b2d7d7692a6deb51227fa9f4e7cf8f49d6c375
   FacebookCore: 563bb4cbcd7dd86cf89f3729252140bf256aacaa
   FacebookShare: e75d5e81ef7bd7aab2f865446c4c27015b43bae6
@@ -54,6 +54,6 @@ SPEC CHECKSUMS:
   Intercom: d189cf8cc8591e7e63dbb10ee4401a70a7fdc9d6
   KeychainSwift: 4209611373ca4a098e09b1e547eebd87c544dcc4
 
-PODFILE CHECKSUM: 44f1c03e5cf3c58333cea9039ae232cd1b34b1fb
+PODFILE CHECKSUM: e21ba83fa6f2b12cceca926cc11c0854ea86c9ed
 
 COCOAPODS: 1.8.4

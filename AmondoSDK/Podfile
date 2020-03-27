@@ -12,6 +12,6 @@ target 'AmondoSDK' do
     pod 'Cloudinary'#, '~> 2.0'
     pod 'Intercom'
     pod 'FacebookShare'
-    pod 'Apollo'
+    pod 'Apollo', '0.18.1'
     
 end

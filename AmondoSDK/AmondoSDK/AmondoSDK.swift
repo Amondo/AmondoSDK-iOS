@@ -33,8 +33,10 @@ public class AmondoSDK: NSObject {
         Network.shared.configure()
         Network.shared.apollo!.perform(mutation: LoginMutation(email: appID, password: secretKey)) { result in
             switch result {
-            case .success(let _):
+            case .success(_):
                 guard let data = try? result.get().data else { return }
+                AMDDefaults.Standard.setString(key: "username", value: appID)
+                AMDDefaults.Standard.setString(key: "token", value: data!.loginUser.token)
                 AMDUser.currentUser()?.token = data!.loginUser.token
                 print("AMONDO_SDK: SDK successfully initialised")
             case .failure(let error):

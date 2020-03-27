@@ -93,7 +93,7 @@ public class AmondoSDK: NSObject {
     }
     
     public func loadSingleImprint(id:Int, completion:@escaping (_ error:Error?,_ imprint:AMDImprintItem?)->()){
-        
+        Network.shared.configure()
         Network.shared.apollo!.fetch(query: GetImprintsByIdQuery(ids: [String(id)])) { result in
             switch result {
             case .success(let graphQLResult):
@@ -118,6 +118,7 @@ public class AmondoSDK: NSObject {
     }
     
     public func loadAllImprints(completion:@escaping (_ error:Error?,_ imprints:[AMDImprintItem]?)->()){
+        Network.shared.configure()
         Network.shared.apollo!.fetch(query: GetImprintsQuery()) { result in
             switch result {
             case .success(let graphQLResult):
@@ -147,6 +148,7 @@ public class AmondoSDK: NSObject {
     }
     
     public func loadImprintsWithIds(ids: [Int], completion:@escaping (_ error:Error?,_ imprints:[AMDImprintItem]?)->()){
+        Network.shared.configure()
         Network.shared.apollo!.fetch(query: GetImprintsByIdQuery(ids: ids.map{String($0)})) { result in
             switch result {
             case .success(let graphQLResult):

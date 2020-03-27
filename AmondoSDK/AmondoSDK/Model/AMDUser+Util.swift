@@ -33,47 +33,7 @@ extension AMDUser {
             let ua = user.localUserAtrributes()
             user.email = ua["email"] as? String ?? ""
             user.firstName = ua["firstName"] as? String
-            if let userId = ua["id"] as? Int {
-                user.id = String(userId)
-            } else {
-                user.id = ua["id"] as! String
-            }
-            
-            user.lastName = ua["lastName"] as? String
-            user.refCode = ua["refCode"] as? String
-            if let liked = ua["savedEvents"] as? [String] {
-                user.savedEvents = liked
-            }
-            user.photosPermitted = ua["cameraroll_permitted"] as! Bool
-            user.notificationsPermitted = ua["notifications_permitted"] as! Bool
-            user.allEvents = ua["allEvents"] as? [String]
 
-            if let array = ua["events_users_notified"] as? [[String: Any]] {
-                for el in array {
-                    let id = el["event_id"] as! Int
-                    user.notifiedEvents.append(String(id))
-                }
-            }
-
-            if let array = ua["events_users_contributed"] as? [[String: Any]] {
-                for el in array {
-                    let id = el["event_id"] as! Int
-                    user.contributedEvents.append(String(id))
-                }
-            }
-
-            if let profileImage = ua["profile_image"] as? [String: Any] {
-                let data = AMDFile(file: profileImage, ftype: "photo")
-                user.profileImage = data
-            }
-
-            user.events_users = [String]()
-            if let all = ua["events_users"] as? [[String: Any]] {
-                for el in all {
-                    let id = el["event_id"] as! Int
-                    user.events_users.append(String(id))
-                }
-            }
             return user
         }
         return nil

@@ -19,8 +19,7 @@ extension ImprintGridViewController: UploadManagerDelegate {
     }
     
     func uploadManagerProgress(progress: Double) {
-        print("uploading..")
-        print(progress)
+
     }
     
 }

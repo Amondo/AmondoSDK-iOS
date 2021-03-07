@@ -100,7 +100,6 @@ class DeviceViewController: UIViewController {
             scrollView.delegate=self
         }
         
-        print(asset.asset!.localIdentifier)
         
         if asset.type == "deviceVideo" {
             
@@ -220,19 +219,9 @@ class DeviceViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
-        print(tableView.frame)
-        print(tableView.scrollIndicatorInsets)
         if #available(iOS 11.0, *) {
-            print(tableView.safeAreaInsets)
-            //self.view.safeAreaInsets.top=
-            //tableView.safeAreaInsets.top=0
             tableView.contentInset.top = -tableView.safeAreaInsets.top
-        } else {
-            // Fallback on earlier versions
         }
-        print(tableView.contentInset)
-        
     }
     
     func initialAnimation(){
@@ -301,10 +290,7 @@ class DeviceViewController: UIViewController {
         
     }
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        print("end dragging")
         if scrollView.contentOffset.y < -30 {
-            //    scrollView.scrollEnabled=false
-            //  scrollView.contentOffset.y=0
             closeAnimation()
             
         }
@@ -316,12 +302,6 @@ class DeviceViewController: UIViewController {
         
         if scrollView==self.scrollView {
             return
-        }
-        
-        if scrollView.contentOffset.y < 0 {
-            //          headerView.frame.origin.y = 0
-        } else {
-            
         }
         
         headerView.frame.origin.y = -scrollView.contentOffset.y
@@ -370,42 +350,17 @@ extension DeviceViewController: UITableViewDelegate, UITableViewDataSource {
                 
                 let geoCoder = CLGeocoder()
                 let location = CLLocation(latitude: (asset.asset?.location?.coordinate.latitude)!, longitude: (asset.asset?.location?.coordinate.longitude)!)
-                var address="Photo location"
+                var address = "Photo location"
                 
                 
                 geoCoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) -> Void in
-                    
-                    // Place details
                     var placeMark: CLPlacemark!
                     placeMark = placemarks?[0]
-                    
-                    
-                    
                     if placeMark.addressDictionary != nil {
-                        // Location name
-                        if let locationName = placeMark.addressDictionary!["Name"] as? NSString {
-                            print(locationName)
-                        }
-                        
-                        // Street address
-                        if let street = placeMark.addressDictionary!["Thoroughfare"] as? NSString {
-                            print(street)
-                        }
-                        
-                        // City
                         if let city = placeMark.addressDictionary!["City"] as? NSString {
                             address = String(city)
-                            print(city)
                         }
-                        
-                        // Zip code
-                        if let zip = placeMark.addressDictionary!["ZIP"] as? NSString {
-                            print(zip)
-                        }
-                        
-                        // Country
                         if let country = placeMark.addressDictionary!["Country"] as? NSString {
-                            print(country)
                             address = address + ", " + String(country)
                         }
                     } else {
@@ -469,15 +424,10 @@ extension DeviceViewController: UITableViewDelegate, UITableViewDataSource {
         
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath)
-            
             return cell
         } else  {
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell1", for: indexPath)
-            
             return cell
-//            let cell = tableView.dequeueReusableCell(withIdentifier: "commentCell", for: indexPath) as! CommentCell
-//
-//            return cell
         }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

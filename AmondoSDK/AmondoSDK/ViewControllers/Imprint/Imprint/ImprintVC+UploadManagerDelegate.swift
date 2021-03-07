@@ -19,8 +19,6 @@ extension ImprintViewController: UploadManagerDelegate {
     }
     
     func uploadManagerProgress(progress: Double) {
-        print("uploding..")
-        print(progress)
     }
     
 }

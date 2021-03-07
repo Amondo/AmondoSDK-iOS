@@ -36,14 +36,14 @@ extension FinitoViewController: UITableViewDelegate, UITableViewDataSource {
         case .viewAgain:
             actionViewAgain()
         case .backToGallery:
-            print("close")
+            print("")
             //IMPRINTVC?.closedImprint()
         case .share:
             actionShare()
         case .chat:
             Intercom.presentMessageComposer()
         default:
-            print("none found")
+            print("")
         }
         
         view.layoutIfNeeded()

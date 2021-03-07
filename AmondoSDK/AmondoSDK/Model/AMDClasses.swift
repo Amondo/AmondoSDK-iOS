@@ -460,7 +460,6 @@ class AMDQuery: NSObject {
                 }
             }
             var urlString = "https://relay.amondo.com/search/"+searchTerm
-            print(urlString)
             let allowedCharacterSet = (CharacterSet(charactersIn: "<>,{} ").inverted)
 
             if let escapedString = urlString.addingPercentEncoding(withAllowedCharacters: allowedCharacterSet) {
@@ -614,15 +613,9 @@ class AMDQuery: NSObject {
         ]
 
         let urlstring = self.parsedURL()
-        print(urlstring)
-
         if urlstring == "" {
             completion(nil, nil)
         }
-        print("\n")
-        print(urlstring)
-        print("\n")
-
         Alamofire.request(URL(string: urlstring)!, method: .delete, parameters: nil, encoding: JSONEncoding.default, headers: headers).responseJSON { (response: DataResponse<Any>) in
 
             switch response.result {

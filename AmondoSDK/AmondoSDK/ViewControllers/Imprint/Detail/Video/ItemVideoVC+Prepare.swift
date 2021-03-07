@@ -59,14 +59,16 @@ extension ItemVideoViewController {
         let source = asset.aobject?["source"] as? String
         let title = source?.lowercased() == "amondo" ? "Open" : "Open in " + source!
         buttonOpen.setTitle(title , for: .normal)
-        let file = AMDFile(file: asset.aobject!["avatar"] as! Dictionary<String, Any>, ftype: "photo")
-        file.getDataInBackground { (error:Error?, data:Data?, cached:Bool) in
-            if error == nil {
-                let img = UIImage(data: data!)
-                if let imageViewAvatar = self.imageViewUserAvatar {
-                    imageViewAvatar.image = img
+        
+        if !Optional.isNil(asset.aobject!["avatar"]) {
+            let file = AMDFile(file: asset.aobject!["avatar"] as! Dictionary<String, Any>, ftype: "photo")
+            file.getDataInBackground { (error:Error?, data:Data?, cached:Bool) in
+                if error == nil {
+                    let img = UIImage(data: data!)
+                    if let imageViewAvatar = self.imageViewUserAvatar {
+                        imageViewAvatar.image = img
+                    }
                 }
-                
             }
         }
     }

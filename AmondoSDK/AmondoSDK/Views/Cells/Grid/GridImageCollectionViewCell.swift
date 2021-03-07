@@ -57,7 +57,6 @@ class GridImageCollectionViewCell: UICollectionViewCell {
                     file.cached = false
                     file.cacheUrl = nil
                 }
-                print(file.parsedURL())
                 _ = file.getDataInBackground(completion: { (error: Error?, data: Data?, _: Bool) in
                     
                     self.item.loading = false

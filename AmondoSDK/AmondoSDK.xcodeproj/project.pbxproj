@@ -489,17 +489,17 @@
 		9BB9A6C422AF15AE00C1D132 /* SF-Pro-Text-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9BB9A5C522AF15AE00C1D132 /* SF-Pro-Text-Regular.otf */; };
 		9BB9A6C522AF15AE00C1D132 /* SF-Pro-Text-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9BB9A5C622AF15AE00C1D132 /* SF-Pro-Text-Bold.otf */; };
 		9BB9A6C622AF15AE00C1D132 /* SF-Pro-Text-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 9BB9A5C722AF15AE00C1D132 /* SF-Pro-Text-Semibold.otf */; };
-		D126C7B8242D79770011DA13 /* GetImptints.graphql in Resources */ = {isa = PBXBuildFile; fileRef = D126C7B7242D79770011DA13 /* GetImptints.graphql */; };
-		D126C7BA242D79930011DA13 /* GetImprintsById.graphql in Resources */ = {isa = PBXBuildFile; fileRef = D126C7B9242D79930011DA13 /* GetImprintsById.graphql */; };
-		D126C7BC242D79B60011DA13 /* Login.graphql in Resources */ = {isa = PBXBuildFile; fileRef = D126C7BB242D79B60011DA13 /* Login.graphql */; };
-		D126C7BE242D79D20011DA13 /* GetTiles.graphql in Resources */ = {isa = PBXBuildFile; fileRef = D126C7BD242D79D20011DA13 /* GetTiles.graphql */; };
+		D100E38C25F422A500AF0EF7 /* Amondo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D100E38725F422A500AF0EF7 /* Amondo.xcdatamodeld */; };
+		D100E38E25F422A500AF0EF7 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100E38B25F422A500AF0EF7 /* CoreData.swift */; };
+		D100E39525F4230F00AF0EF7 /* GetTiles.graphql in Resources */ = {isa = PBXBuildFile; fileRef = D100E38F25F4230E00AF0EF7 /* GetTiles.graphql */; };
+		D100E39625F4230F00AF0EF7 /* schema.json in Resources */ = {isa = PBXBuildFile; fileRef = D100E39025F4230E00AF0EF7 /* schema.json */; };
+		D100E39725F4230F00AF0EF7 /* GetImprintsById.graphql in Resources */ = {isa = PBXBuildFile; fileRef = D100E39125F4230F00AF0EF7 /* GetImprintsById.graphql */; };
+		D100E39825F4230F00AF0EF7 /* GetImptints.graphql in Resources */ = {isa = PBXBuildFile; fileRef = D100E39225F4230F00AF0EF7 /* GetImptints.graphql */; };
+		D100E39925F4230F00AF0EF7 /* Login.graphql in Resources */ = {isa = PBXBuildFile; fileRef = D100E39325F4230F00AF0EF7 /* Login.graphql */; };
+		D100E39A25F4230F00AF0EF7 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = D100E39425F4230F00AF0EF7 /* API.swift */; };
 		D1465B9B2107591600158EDB /* AmondoSDK.h in Headers */ = {isa = PBXBuildFile; fileRef = D1465B992107591600158EDB /* AmondoSDK.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D1465C9B210764DE00158EDB /* AmondoSDK.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1465C9A210764DE00158EDB /* AmondoSDK.swift */; };
 		D1465C9C2107650700158EDB /* AmondoSDK.swift in Headers */ = {isa = PBXBuildFile; fileRef = D1465C9A210764DE00158EDB /* AmondoSDK.swift */; };
-		D152030A242E0F7900DFE933 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1520309242E0F7900DFE933 /* API.swift */; };
-		D1646BA0242E9DE200158D1E /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1646B9B242E9DE100158D1E /* CoreData.swift */; };
-		D1646BA1242E9DE200158D1E /* Amondo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D1646B9C242E9DE100158D1E /* Amondo.xcdatamodeld */; };
-		D1646BA2242E9DE200158D1E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D1646B9E242E9DE200158D1E /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -986,18 +986,18 @@
 		9BB9A5C522AF15AE00C1D132 /* SF-Pro-Text-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Regular.otf"; sourceTree = "<group>"; };
 		9BB9A5C622AF15AE00C1D132 /* SF-Pro-Text-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Bold.otf"; sourceTree = "<group>"; };
 		9BB9A5C722AF15AE00C1D132 /* SF-Pro-Text-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Text-Semibold.otf"; sourceTree = "<group>"; };
-		D126C7B7242D79770011DA13 /* GetImptints.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetImptints.graphql; sourceTree = "<group>"; };
-		D126C7B9242D79930011DA13 /* GetImprintsById.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetImprintsById.graphql; sourceTree = "<group>"; };
-		D126C7BB242D79B60011DA13 /* Login.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = Login.graphql; sourceTree = "<group>"; };
-		D126C7BD242D79D20011DA13 /* GetTiles.graphql */ = {isa = PBXFileReference; lastKnownFileType = text; path = GetTiles.graphql; sourceTree = "<group>"; };
+		D100E38825F422A500AF0EF7 /* Amondo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Amondo.xcdatamodel; sourceTree = "<group>"; };
+		D100E38B25F422A500AF0EF7 /* CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
+		D100E38F25F4230E00AF0EF7 /* GetTiles.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GetTiles.graphql; sourceTree = "<group>"; };
+		D100E39025F4230E00AF0EF7 /* schema.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = schema.json; sourceTree = "<group>"; };
+		D100E39125F4230F00AF0EF7 /* GetImprintsById.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GetImprintsById.graphql; sourceTree = "<group>"; };
+		D100E39225F4230F00AF0EF7 /* GetImptints.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GetImptints.graphql; sourceTree = "<group>"; };
+		D100E39325F4230F00AF0EF7 /* Login.graphql */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Login.graphql; sourceTree = "<group>"; };
+		D100E39425F4230F00AF0EF7 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		D1465B962107591600158EDB /* AmondoSDK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AmondoSDK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1465B992107591600158EDB /* AmondoSDK.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AmondoSDK.h; sourceTree = "<group>"; };
 		D1465B9A2107591600158EDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D1465C9A210764DE00158EDB /* AmondoSDK.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AmondoSDK.swift; sourceTree = "<group>"; };
-		D1520309242E0F7900DFE933 /* API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = SOURCE_ROOT; };
-		D1646B9B242E9DE100158D1E /* CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
-		D1646B9D242E9DE100158D1E /* Amondo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Amondo.xcdatamodel; sourceTree = "<group>"; };
-		D1646B9F242E9DE200158D1E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		E8D1C09B24C9B45ADADF66D3 /* Pods-AmondoSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AmondoSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AmondoSDK/Pods-AmondoSDK.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1071,9 +1071,8 @@
 		9BB9A2E422AF157400C1D132 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				D1646B9C242E9DE100158D1E /* Amondo.xcdatamodeld */,
-				D1646B9B242E9DE100158D1E /* CoreData.swift */,
-				D1646B9E242E9DE200158D1E /* Model.xcdatamodeld */,
+				D100E38725F422A500AF0EF7 /* Amondo.xcdatamodeld */,
+				D100E38B25F422A500AF0EF7 /* CoreData.swift */,
 			);
 			name = CoreData;
 			path = "../../../../am-sdk-new/AmondoSDK/Classes/CoreData";
@@ -1470,13 +1469,14 @@
 		9BB9A39222AF157400C1D132 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				D100E39425F4230F00AF0EF7 /* API.swift */,
+				D100E39125F4230F00AF0EF7 /* GetImprintsById.graphql */,
+				D100E39225F4230F00AF0EF7 /* GetImptints.graphql */,
+				D100E38F25F4230E00AF0EF7 /* GetTiles.graphql */,
+				D100E39325F4230F00AF0EF7 /* Login.graphql */,
+				D100E39025F4230E00AF0EF7 /* schema.json */,
 				9BB9A39322AF157400C1D132 /* Network */,
 				9BB9A39622AF157400C1D132 /* API */,
-				D126C7B7242D79770011DA13 /* GetImptints.graphql */,
-				D126C7B9242D79930011DA13 /* GetImprintsById.graphql */,
-				D126C7BB242D79B60011DA13 /* Login.graphql */,
-				D126C7BD242D79D20011DA13 /* GetTiles.graphql */,
-				D1520309242E0F7900DFE933 /* API.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -2056,6 +2056,7 @@
 				9BB9A6A522AF15AE00C1D132 /* amondo_logo_00044@2x.png in Resources */,
 				9BB9A65722AF15AE00C1D132 /* amondo_logo_00022@3x.png in Resources */,
 				9BB9A6B622AF15AE00C1D132 /* amondo_logo_00046@2x.png in Resources */,
+				D100E39925F4230F00AF0EF7 /* Login.graphql in Resources */,
 				9BB9A4A522AF157500C1D132 /* GridArticleCollectionViewCell.xib in Resources */,
 				9BB9A69E22AF15AE00C1D132 /* amondo_logo_00009@3x.png in Resources */,
 				9BB9A69722AF15AE00C1D132 /* amondo_logo_00050@3x.png in Resources */,
@@ -2075,6 +2076,7 @@
 				9BB9A4AF22AF157500C1D132 /* LayoutsAllOld.plist in Resources */,
 				9BB9A5E522AF15AE00C1D132 /* tap_00009.png in Resources */,
 				9BB9A64722AF15AE00C1D132 /* sw-dwn_00017.png in Resources */,
+				D100E39625F4230F00AF0EF7 /* schema.json in Resources */,
 				9BB9A5EC22AF15AE00C1D132 /* tap_00032.png in Resources */,
 				9BB9A65B22AF15AE00C1D132 /* amondo_logo_00053@3x.png in Resources */,
 				9BB9A5FD22AF15AE00C1D132 /* sw-up_00037.png in Resources */,
@@ -2087,9 +2089,9 @@
 				9BB9A62B22AF15AE00C1D132 /* sw-dwn_00030.png in Resources */,
 				9BB9A45222AF157500C1D132 /* FinitoViewController.xib in Resources */,
 				9BB9A67622AF15AE00C1D132 /* amondo_logo_00049@2x.png in Resources */,
-				D126C7B8242D79770011DA13 /* GetImptints.graphql in Resources */,
 				9BB9A64D22AF15AE00C1D132 /* sw-dwn_00000.png in Resources */,
 				9BB9A63722AF15AE00C1D132 /* sw-dwn_00008.png in Resources */,
+				D100E39825F4230F00AF0EF7 /* GetImptints.graphql in Resources */,
 				9BB9A65E22AF15AE00C1D132 /* amondo_logo_00008@3x.png in Resources */,
 				9BB9A5D422AF15AE00C1D132 /* tap_00038.png in Resources */,
 				9BB9A67122AF15AE00C1D132 /* amondo_logo_00010@2x.png in Resources */,
@@ -2101,7 +2103,6 @@
 				9BB9A6AA22AF15AE00C1D132 /* amondo_logo_00058@3x.png in Resources */,
 				9BB9A63D22AF15AE00C1D132 /* sw-dwn_00004.png in Resources */,
 				9BB9A6B122AF15AE00C1D132 /* amondo_logo_00029@3x.png in Resources */,
-				D126C7BA242D79930011DA13 /* GetImprintsById.graphql in Resources */,
 				9BB9A6BE22AF15AE00C1D132 /* amondo_logo_00044@3x.png in Resources */,
 				9BB9A5D122AF15AE00C1D132 /* tap_00028.png in Resources */,
 				9BB9A61922AF15AE00C1D132 /* sw-up_00011.png in Resources */,
@@ -2110,6 +2111,7 @@
 				9BB9A61522AF15AE00C1D132 /* sw-up_00015.png in Resources */,
 				9BB9A5DD22AF15AE00C1D132 /* tap_00023.png in Resources */,
 				9BB9A66722AF15AE00C1D132 /* amondo_logo_00018@2x.png in Resources */,
+				D100E39725F4230F00AF0EF7 /* GetImprintsById.graphql in Resources */,
 				9BB9A69522AF15AE00C1D132 /* amondo_logo_00033@3x.png in Resources */,
 				9BB9A66322AF15AE00C1D132 /* amondo_logo_00004@3x.png in Resources */,
 				9BB9A62022AF15AE00C1D132 /* sw-up_00007.png in Resources */,
@@ -2279,8 +2281,8 @@
 				9BB9A48A22AF157500C1D132 /* ImageCollectionViewCell.xib in Resources */,
 				9BB9A5D622AF15AE00C1D132 /* tap_00011.png in Resources */,
 				9BB9A61E22AF15AE00C1D132 /* sw-up_00012.png in Resources */,
+				D100E39525F4230F00AF0EF7 /* GetTiles.graphql in Resources */,
 				9BB9A4B022AF157500C1D132 /* GridScrollerCollectionViewCell.xib in Resources */,
-				D126C7BE242D79D20011DA13 /* GetTiles.graphql in Resources */,
 				9BB9A60922AF15AE00C1D132 /* sw-up_00025.png in Resources */,
 				9BB9A62122AF15AE00C1D132 /* sw-up_00013.png in Resources */,
 				9BB9A67822AF15AE00C1D132 /* amondo_logo_00034@2x.png in Resources */,
@@ -2331,7 +2333,6 @@
 				9BB9A68D22AF15AE00C1D132 /* amondo_logo_00017@2x.png in Resources */,
 				9BB9A61822AF15AE00C1D132 /* sw-up_00005.png in Resources */,
 				9BB9A5CA22AF15AE00C1D132 /* tap_00003.png in Resources */,
-				D126C7BC242D79B60011DA13 /* Login.graphql in Resources */,
 				9BB9A5F022AF15AE00C1D132 /* tap_00040.png in Resources */,
 				9BB9A6A322AF15AE00C1D132 /* amondo_logo_00027@2x.png in Resources */,
 				9BB9A61C22AF15AE00C1D132 /* sw-up_00010.png in Resources */,
@@ -2428,6 +2429,7 @@
 				9BB9A3E122AF157400C1D132 /* SettingsItem+Util.swift in Sources */,
 				9BB9A3FF22AF157500C1D132 /* Date+Util.swift in Sources */,
 				9BB9A47222AF157500C1D132 /* GridTemplate.swift in Sources */,
+				D100E38E25F422A500AF0EF7 /* CoreData.swift in Sources */,
 				9BB9A49122AF157500C1D132 /* ImageCollectionViewCell.swift in Sources */,
 				9BB9A3E422AF157500C1D132 /* AMDVideo.swift in Sources */,
 				9BB9A3FE22AF157500C1D132 /* Size.swift in Sources */,
@@ -2450,6 +2452,7 @@
 				9BB9A3E322AF157500C1D132 /* AMDFile.swift in Sources */,
 				9BB9A40122AF157500C1D132 /* LayoutConstants.swift in Sources */,
 				9BB9A49322AF157500C1D132 /* ContributeMediaCollectionViewCell.swift in Sources */,
+				D100E38C25F422A500AF0EF7 /* Amondo.xcdatamodeld in Sources */,
 				9BB9A3EC22AF157500C1D132 /* AMDSpotify.swift in Sources */,
 				9BB9A48122AF157500C1D132 /* AnalyticsManager.swift in Sources */,
 				9BB9A42A22AF157500C1D132 /* TutorialViewControllerDelegate.swift in Sources */,
@@ -2472,7 +2475,6 @@
 				9BB9A47B22AF157500C1D132 /* ImprintGridVC+ImprintActionsViewControllerDelegate.swift in Sources */,
 				9BB9A44922AF157500C1D132 /* ItemArticleVC+Actions.swift in Sources */,
 				9BB9A3F522AF157500C1D132 /* AMDUser.swift in Sources */,
-				D1646BA0242E9DE200158D1E /* CoreData.swift in Sources */,
 				9BB9A48E22AF157500C1D132 /* CommentTableViewCell.swift in Sources */,
 				9BB9A47522AF157500C1D132 /* ImprintGridViewController.swift in Sources */,
 				9BB9A40322AF157500C1D132 /* Extensions.swift in Sources */,
@@ -2487,7 +2489,6 @@
 				9BB9A40E22AF157500C1D132 /* AmondoPasswordToggleVisibilityView.swift in Sources */,
 				9BB9A47A22AF157500C1D132 /* ImprintGridVC+UploadManagerDelegate.swift in Sources */,
 				9BB9A42722AF157500C1D132 /* MediaUploadViewController+Prepare.swift in Sources */,
-				D152030A242E0F7900DFE933 /* API.swift in Sources */,
 				9BB9A48622AF157500C1D132 /* ConsentAPIManager.swift in Sources */,
 				9BB9A43922AF157500C1D132 /* ImprintActionsVC+MFMailComposeViewControllerDelegate.swift in Sources */,
 				9BB9A3DA22AF157400C1D132 /* AMDImprintItem.swift in Sources */,
@@ -2541,12 +2542,10 @@
 				9BB9A41222AF157500C1D132 /* UIButton+Highlight.swift in Sources */,
 				9BB9A48022AF157500C1D132 /* UserDefaultsManager.swift in Sources */,
 				9BB9A48922AF157500C1D132 /* UserAPIManager.swift in Sources */,
-				D1646BA2242E9DE200158D1E /* Model.xcdatamodeld in Sources */,
 				9BB9A46222AF157500C1D132 /* ImprintViewController+Analytics.swift in Sources */,
 				9BB9A48822AF157500C1D132 /* CategoryAPIManager.swift in Sources */,
 				9BB9A40722AF157500C1D132 /* NotificationView.swift in Sources */,
 				9BB9A40A22AF157500C1D132 /* Colors.swift in Sources */,
-				D1646BA1242E9DE200158D1E /* Amondo.xcdatamodeld in Sources */,
 				9BB9A44C22AF157500C1D132 /* InstagramVC+UIGestureRecognizerDelegate.swift in Sources */,
 				9BB9A4B422AF157500C1D132 /* GridHeaderReusableView+Prepare.swift in Sources */,
 				9BB9A43322AF157500C1D132 /* BrowserVC+Prepare.swift in Sources */,
@@ -2588,6 +2587,7 @@
 				9BB9A47822AF157500C1D132 /* ContentDynamicLayout.swift in Sources */,
 				9BB9A44422AF157500C1D132 /* ItemTextVC+UIGestureRecognizerDelegate.swift in Sources */,
 				9BB9A41E22AF157500C1D132 /* SelectMediaViewController+MediaUploadViewControllerDelegate.swift in Sources */,
+				D100E39A25F4230F00AF0EF7 /* API.swift in Sources */,
 				9BB9A46122AF157500C1D132 /* ImprintVC+UIPageViewControllerDelegates.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2803,23 +2803,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		D1646B9C242E9DE100158D1E /* Amondo.xcdatamodeld */ = {
+		D100E38725F422A500AF0EF7 /* Amondo.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				D1646B9D242E9DE100158D1E /* Amondo.xcdatamodel */,
+				D100E38825F422A500AF0EF7 /* Amondo.xcdatamodel */,
 			);
-			currentVersion = D1646B9D242E9DE100158D1E /* Amondo.xcdatamodel */;
+			currentVersion = D100E38825F422A500AF0EF7 /* Amondo.xcdatamodel */;
 			path = Amondo.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-		D1646B9E242E9DE200158D1E /* Model.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				D1646B9F242E9DE200158D1E /* Model.xcdatamodel */,
-			);
-			currentVersion = D1646B9F242E9DE200158D1E /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

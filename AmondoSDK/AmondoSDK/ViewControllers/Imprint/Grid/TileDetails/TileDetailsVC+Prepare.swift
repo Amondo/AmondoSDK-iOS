@@ -103,11 +103,13 @@ extension TileDetailsViewController {
             let title = source?.lowercased() == "amondo" ? "Open" : "Open in " + source!
             buttonOpenUrl.setTitle(title , for: .normal)
         } else {
-            let file = AMDFile(file: asset.aobject!["avatar"] as! Dictionary<String, Any>, ftype: "photo")
-            file.getDataInBackground { (error:Error?, data:Data?, cached:Bool) in
-                if error == nil {
-                    let img = UIImage(data: data!)
-                    self.imageViewAvatar.image = img
+            if !Optional.isNil(asset.aobject!["avatar"]) {
+                let file = AMDFile(file: asset.aobject!["avatar"] as! Dictionary<String, Any>, ftype: "photo")
+                file.getDataInBackground { (error:Error?, data:Data?, cached:Bool) in
+                    if error == nil {
+                        let img = UIImage(data: data!)
+                        self.imageViewAvatar.image = img
+                    }
                 }
             }
         }

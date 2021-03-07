@@ -42,11 +42,13 @@ extension ItemTextViewController {
         labelInfo.text = "\(asset.instagram!.source!.uppercased()) • \((asset.date).stringDate(DateFormatter.Style.medium, timeStyle: DateFormatter.Style.none).uppercased())"
         labelUsername.text = asset.instagram?.username
         
-        let file = AMDFile(file: asset.aobject!["avatar"] as! Dictionary<String, Any>, ftype: "photo")
-        file.getDataInBackground { (error:Error?, data:Data?, cached:Bool) in
-            if error == nil {
-                let im = UIImage(data: data!)
-                self.imageViewUserAvatar.image = im
+        if !Optional.isNil(asset.aobject!["avatar"]) {
+            let file = AMDFile(file: asset.aobject!["avatar"] as! Dictionary<String, Any>, ftype: "photo")
+            file.getDataInBackground { (error:Error?, data:Data?, cached:Bool) in
+                if error == nil {
+                    let img = UIImage(data: data!)
+                    self.imageViewUserAvatar.image = img
+                }
             }
         }
         

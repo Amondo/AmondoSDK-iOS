@@ -6,12 +6,7 @@ query GetImprintsById($ids: [ID]) {
         endDate
         createdAt
         updatedAt
-        locationRadius
         location
-        geoPoint {
-            latitude
-            longitude
-        }
         image {
           url
           type

@@ -164,8 +164,6 @@ extension AMDFile {
         }
 
         self.cached = false
-        //print("Get data in background from: \(urlstring)")
-
         let req = Alamofire.request(URL(string: urlstring)!, method: .get).responseData(completionHandler: { (response: DataResponse<Data>) in
             switch response.result {
 
@@ -184,7 +182,7 @@ extension AMDFile {
                 }
             }
         }).downloadProgress { progress in
-            //print(progress.fractionCompleted)
+
         }
 
         return req

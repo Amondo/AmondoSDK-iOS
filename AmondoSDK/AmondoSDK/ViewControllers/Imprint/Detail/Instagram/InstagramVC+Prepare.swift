@@ -56,11 +56,13 @@ extension InstagramViewController {
         labelDate.text = "\(asset.instagram!.source!.uppercased()) • \((asset.date).stringDate(DateFormatter.Style.medium, timeStyle: DateFormatter.Style.none).uppercased())"
         labelText.text = asset.instagram?.description
         
-        let file = AMDFile(file: asset.aobject!["avatar"] as! Dictionary<String, Any>, ftype: "photo")
-        file.getDataInBackground { (error:Error?, data:Data?, cached:Bool) in
-            if error == nil {
-                let img = UIImage(data: data!)
-                self.imageViewAvatar.image = img
+        if !Optional.isNil(asset.aobject!["avatar"]) {
+            let file = AMDFile(file: asset.aobject!["avatar"] as! Dictionary<String, Any>, ftype: "photo")
+            file.getDataInBackground { (error:Error?, data:Data?, cached:Bool) in
+                if error == nil {
+                    let img = UIImage(data: data!)
+                    self.imageViewAvatar.image = img
+                }
             }
         }
     }

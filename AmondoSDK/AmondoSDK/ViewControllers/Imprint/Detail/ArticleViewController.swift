@@ -79,12 +79,13 @@ class ArticleViewController: UIViewController {
         transitionImageView.addGestureRecognizer(imTap2)
         // Do any additional setup after loading the view.
         
-        let file = AMDFile(file: asset.aobject!["avatar"] as! Dictionary<String, Any>, ftype: "photo")
-        
-        file.getDataInBackground { (error:Error?, data:Data?, cached:Bool) in
-            if error == nil {
-                let im = UIImage(data: data!)
-                self.logoImage.image=im
+        if !Optional.isNil(asset.aobject!["avatar"]) {
+            let file = AMDFile(file: asset.aobject!["avatar"] as! Dictionary<String, Any>, ftype: "photo")
+            file.getDataInBackground { (error:Error?, data:Data?, cached:Bool) in
+                if error == nil {
+                    let img = UIImage(data: data!)
+                    self.logoImage.image = img
+                }
             }
         }
         
@@ -99,17 +100,9 @@ class ArticleViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print(tableView.frame)
-        print(tableView.scrollIndicatorInsets)
         if #available(iOS 11.0, *) {
-            print(tableView.safeAreaInsets)
-            //self.view.safeAreaInsets.top=
-            //tableView.safeAreaInsets.top=0
             tableView.contentInset.top = -tableView.safeAreaInsets.top
-        } else {
-            // Fallback on earlier versions
         }
-        print(tableView.contentInset)
     }
     
     var transBlur: UIVisualEffectView!
@@ -206,18 +199,9 @@ class ArticleViewController: UIViewController {
         return true
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        print("end dragging")
         if scrollView.contentOffset.y < -30 {
-            //    scrollView.scrollEnabled=false
-            //  scrollView.contentOffset.y=0
             closeAnimation()
-            
         }
     }
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

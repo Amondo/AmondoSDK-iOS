@@ -52,7 +52,6 @@ class ImageCollectionViewCell: UICollectionViewCell {
                 file.height = Int(vcView.bounds.height)
                 file.cacheUrl = file.cacheURLConstructor()
                 file.cached = file.checkDoesCacheExist()
-                print(file.parsedURL())
                 
                 let r = file.getDataInBackground(completion: { (error: Error?, data: Data?, _: Bool) in
                     

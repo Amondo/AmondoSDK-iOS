@@ -64,7 +64,6 @@ extension InstagramViewController {
         file.cached = file.checkDoesCacheExist()
         file.cached = false
         file.cacheUrl = nil
-        print(file.parsedURL())
         _ = file.getDataInBackground(completion: { (error: Error?, data: Data?, _: Bool) in
             self.asset.loading = false
             if error == nil {

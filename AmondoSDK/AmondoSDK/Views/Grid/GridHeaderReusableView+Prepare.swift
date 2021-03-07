@@ -36,7 +36,9 @@ extension GridHeaderReusableView {
         if imprint.event?.date != nil {
             labelInfo.text = (imprint.event?.location?.uppercased())! + " · " + (imprint.event?.date?.stringEvent(showYear: false).uppercased())!
         }
-        
+        print("imprint",imprint)
+        print("img",imprint.image)
+        print("ao",imprint.object)
         if imprint.image == nil {
             if let data = imprint.imageMeta {
                 data.getDataInBackground(completion: { (error:Error?, data:Data?, cached:Bool) in

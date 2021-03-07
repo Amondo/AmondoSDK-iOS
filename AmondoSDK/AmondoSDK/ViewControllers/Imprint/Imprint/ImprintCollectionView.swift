@@ -74,9 +74,6 @@ class SearchRowCell:UICollectionViewCell {
                     
                 }
             }
-            
-            print(data.parsedURL())
-            
             data.quality = 100
             data.width = Int(UIScreen.main.bounds.width)
             data.height = Int(UIScreen.main.bounds.height)
@@ -189,8 +186,6 @@ class GridCell: UICollectionViewCell {
                 }
             }
             
-            print(data.parsedURL())
-            
             cell.image.alpha = 0
             data.getDataInBackground(completion: { (error:Error?, data:Data?, cached:Bool) in
                 if error == nil {
@@ -254,8 +249,6 @@ class MainMenuSection: NSObject, UICollectionViewDelegate, UICollectionViewDataS
         UserAPIManager.deleteEventNotification(event: imprint.objectID(), completion: { (error, success) in
             // .removeObject(object: imprint.objectID(), forKey: "events_users_notified")
         })
-        
-        print(AMDUser.currentUser()?.notifiedEvents)
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -483,9 +476,6 @@ class MainMenuSection: NSObject, UICollectionViewDelegate, UICollectionViewDataS
                     cell.image.image=nil
                     cell.image.tag=indexPath.item
                     let data = genres![indexPath.item].imageFile
-                    
-                    print(data)
-                    
                     
                     data!.getDataInBackground(completion: { (error, data, success) in
                         if success {

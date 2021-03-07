@@ -10,6 +10,17 @@ import Foundation
 import UIKit
 import AVFoundation
 
+extension Optional {
+    static func isNil(_ object: Wrapped) -> Bool {
+        switch object as Any {
+        case Optional<Any>.none:
+            return true
+        default:
+            return false
+        }
+    }
+}
+
 extension UIView {
     func addShadows(_ x: CGFloat, y: CGFloat, alpha: Float, radius: CGFloat) {
         self.layer.shadowColor = UIColor.black.cgColor

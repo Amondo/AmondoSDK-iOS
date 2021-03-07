@@ -90,9 +90,7 @@ class CuratedVideoCollectionViewCell: UICollectionViewCell {
         self.avPlayer.isMuted = true
         self.avPlayer.pause()
         
-        //     avPlayerAMD?.play()
         avPlayer.isMuted = true
-        print("time diff 3:\(Date().timeIntervalSince(start))")
         UIView.animate(withDuration: 0.5, animations: {
             self.alpha = 1
         }, completion: { (_: Bool) in

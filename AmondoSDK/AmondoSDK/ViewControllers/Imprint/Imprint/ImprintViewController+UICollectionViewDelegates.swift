@@ -429,7 +429,7 @@ extension ImprintViewController: UICollectionViewDelegate, UICollectionViewDataS
             return cell
         }
         
-        return nil!
+        return UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {

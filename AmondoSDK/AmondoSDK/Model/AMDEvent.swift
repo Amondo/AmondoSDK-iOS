@@ -11,6 +11,7 @@ import AVKit
 
 class AMDEvent: Decodable {
     var id: String!
+	var publicId: String?
     var artist: String?
     var location: String?
     var slug: String?
@@ -38,6 +39,7 @@ class AMDEvent: Decodable {
 
     enum CodingKeys: String, CodingKey {
         case id
+		case publicId
         case location
         case artist
         case startDate
@@ -46,6 +48,7 @@ class AMDEvent: Decodable {
         case slug
     }
 
+	
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
@@ -59,6 +62,17 @@ class AMDEvent: Decodable {
                 self.id = stringId
             }
         }
+		
+		do {
+			if let publicId = try container.decodeIfPresent(Int.self, forKey: .publicId) {
+				self.publicId = String(publicId)
+			}
+
+		} catch {
+			if let stringId = try container.decodeIfPresent(String.self, forKey: .publicId) {
+				self.publicId = stringId
+			}
+		}
         
         self.slug = try container.decodeIfPresent(String.self, forKey: .slug)
         self.location = try container.decodeIfPresent(String.self, forKey: .location)

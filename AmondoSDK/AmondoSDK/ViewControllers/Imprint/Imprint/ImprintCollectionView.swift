@@ -117,7 +117,7 @@ class GridCell: UICollectionViewCell {
         cell.notificationView.isHidden = true
         cell.indexPath = indexPath
         cell.indicatorLabel.isHidden = true
-        item.notified = AMDUser.currentUser()!.notifiedEvents.contains(item.objectID())
+		item.notified = ((AMDUser.currentUser()!.notifiedEvents?.contains(item.objectID())) != nil)
 
         if item.status == .upcoming {
             cell.trButton.isUserInteractionEnabled = false

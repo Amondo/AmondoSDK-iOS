@@ -14,21 +14,21 @@ class AMDUser: NSObject, Codable {
     var password: String?
     var token: String?
     var id: String?
-
     var email: String = ""
-    var firstName: String?
-    var lastName: String?
-    var fullName: String?
-    var refCode: String?
-    var savedEvents: [String] = []
-    var allEvents: [String]?
-    var events_users: [String] = []
-    var notifiedEvents: [String] = []
-    var contributedEvents: [String] = []
+    var firstName: String? = ""
+    var lastName: String? = ""
+    var fullName: String? = ""
+    var refCode: String? = ""
+    var savedEvents: [String]? = []
+    var allEvents: [String]? = []
+    var events_users: [String]? = []
+    var notifiedEvents: [String]? = []
+    var contributedEvents: [String]? = []
     var profileImage: AMDFile?
+	var team: AMDTeam?
     var photosPermitted = true
     var notificationsPermitted = true
-
+	
     enum CodingKeys: String, CodingKey {
         case email
         case firstName
@@ -43,6 +43,7 @@ class AMDUser: NSObject, Codable {
         case photosPermitted = "cameraroll_permitted"
         case notificationsPermitted = "notifications_permitted"
         case profileImage = "profile_image"
+		case team
     }
 
     convenience init(username: String, password: String) {
@@ -71,15 +72,29 @@ class AMDUser: NSObject, Codable {
             self.events_users = events.map { "\($0.eventId)" }
         }
 
-        let id = try container.decode(Int.self, forKey: .id)
-        self.id = "\(id)"
+		do {
+			if let id = try container.decodeIfPresent(Int.self, forKey: .id) {
+				self.id = String(id)
+			}
+
+		} catch {
+			if let stringId = try container.decodeIfPresent(String.self, forKey: .id) {
+				self.id = stringId
+			}
+		}
 
         self.firstName = try container.decode(String.self, forKey: .firstName)
         self.lastName = try container.decode(String.self, forKey: .lastName)
+		self.team = try container.decode(AMDTeam.self, forKey: .team)
 
         fullName = firstName! + " " + lastName!
-        self.savedEvents = try container.decode([String].self, forKey: .savedEvents)
-        self.allEvents = try container.decode([String].self, forKey: .allEvents)
+		if let savedEvents = try? container.decode([String].self, forKey: .savedEvents) {
+			self.savedEvents = savedEvents
+		}
+		
+		if let allEvents = try? container.decode([String].self, forKey: .allEvents) {
+			self.allEvents = allEvents
+		}
         
         if let eventsLiked = try? container.decode([AMDEventsUsers].self, forKey: .events_users) {
             self.events_users = eventsLiked.map { "\($0.eventId)" }
@@ -116,25 +131,7 @@ class AMDUser: NSObject, Codable {
         try container.encode(lastName, forKey: .lastName)
         try container.encode(savedEvents, forKey: .savedEvents)
         try container.encode(allEvents, forKey: .allEvents)
-
-        let eventsUsers = events_users.map { id -> AMDEventsUsers in
-            let eventUser = AMDEventsUsers(eventId: Int(id)!, userId: Int(self.id!)!)
-            return eventUser
-        }
-
-        try container.encode(eventsUsers, forKey: .events_users)
-
-        let notifiedEvents = self.notifiedEvents.map { id -> AMDEventsUsers in
-            let eventUser = AMDEventsUsers(eventId: Int(id)!, userId: Int(self.id!)!)
-            return eventUser
-        }
-
-        try container.encode(notifiedEvents, forKey: .notifiedEvents)
-
-        let contributedEvents = self.contributedEvents.map { id -> AMDEventsUsers in
-            let eventUser = AMDEventsUsers(eventId: Int(id)!, userId: Int(self.id!)!)
-            return eventUser
-        }
+		try container.encode(team, forKey: .team)
 
         try container.encode(contributedEvents, forKey: .contributedEvents)
 
@@ -156,21 +153,22 @@ class AMDUser: NSObject, Codable {
         root[CodingKeys.id.rawValue] = self.id
         root[CodingKeys.savedEvents.rawValue] = self.savedEvents
         root[CodingKeys.allEvents.rawValue] = self.allEvents
-        root[CodingKeys.events_users.rawValue] = self.events_users.map { eventId -> [String: Any] in
-            let event = AMDEventsUsers(eventId: Int(eventId)!, userId: Int(self.id!)!)
-
-            return event.dictionary
-        }
-        root[CodingKeys.notifiedEvents.rawValue] = self.notifiedEvents.map { eventId -> [String: Any] in
-            let event = AMDEventsUsers(eventId: Int(eventId)!, userId: Int(self.id!)!)
-
-            return event.dictionary
-        }
-        root[CodingKeys.contributedEvents.rawValue] = self.contributedEvents.map { eventId -> [String: Any] in
-            let event = AMDEventsUsers(eventId: Int(eventId)!, userId: Int(self.id!)!)
-
-            return event.dictionary
-        }
+		root[CodingKeys.team.rawValue] = self.team
+//        root[CodingKeys.events_users.rawValue] = self.events_users.map { eventId -> [String: Any] in
+//            let event = AMDEventsUsers(eventId: Int(eventId)!, userId: Int(self.id!)!)
+//
+//            return event.dictionary
+//        }
+//        root[CodingKeys.notifiedEvents.rawValue] = self.notifiedEvents.map { eventId -> [String: Any] in
+//            let event = AMDEventsUsers(eventId: Int(eventId)!, userId: Int(self.id!)!)
+//
+//            return event.dictionary
+//        }
+//        root[CodingKeys.contributedEvents.rawValue] = self.contributedEvents.map { eventId -> [String: Any] in
+//            let event = AMDEventsUsers(eventId: Int(eventId)!, userId: Int(self.id!)!)
+//
+//            return event.dictionary
+//        }
         root[CodingKeys.photosPermitted.rawValue] = self.photosPermitted
         root[CodingKeys.notificationsPermitted.rawValue] = self.notificationsPermitted
         if let image = self.profileImage {

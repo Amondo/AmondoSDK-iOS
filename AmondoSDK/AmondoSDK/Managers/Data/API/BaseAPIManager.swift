@@ -110,7 +110,7 @@ public class Network {
     var apollo: ApolloClient?
     
     func configure() {
-        networkTransport = HTTPNetworkTransport(url: URL(string: "https://graphql.amondo.com/")!, session: .shared, sendOperationIdentifiers: false, useGETForQueries: false, enableAutoPersistedQueries: false, useGETForPersistedQueryRetry: false, delegate: self, requestCreator: ApolloRequestCreator())
+        networkTransport = HTTPNetworkTransport(url: URL(string: "https://amondo-graphql-publish-imprint.herokuapp.com/")!, session: .shared, sendOperationIdentifiers: false, useGETForQueries: false, enableAutoPersistedQueries: false, useGETForPersistedQueryRetry: false, delegate: self, requestCreator: ApolloRequestCreator())
         apollo = ApolloClient(networkTransport: networkTransport!)
     }
 }

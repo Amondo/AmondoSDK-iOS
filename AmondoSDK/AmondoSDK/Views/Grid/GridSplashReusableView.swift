@@ -21,7 +21,7 @@ class GridSplashReusableView: UICollectionReusableView {
         viewActionBlurView.layer.masksToBounds = true
         
         buttonAction.isUserInteractionEnabled = true
-        buttonAction.isSelected = AMDUser.currentUser()!.events_users.contains(imprint.objectID())
+		buttonAction.isSelected = ((AMDUser.currentUser()!.events_users?.contains(imprint.objectID())) != nil)
         buttonAction.setImage(UIImage(named:"favourite-selected"), for: .selected)
         buttonAction.setImage(UIImage(named:"favourite"), for: .normal)
         buttonAction.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)

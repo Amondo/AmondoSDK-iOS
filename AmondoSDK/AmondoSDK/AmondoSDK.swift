@@ -13,7 +13,7 @@ public class AmondoSDK: NSObject {
     
     override init() {}
     
-    public class func initialise(appID:String,secretKey:String){
+    public class func initialise(appID:String, secretKey:String, completion:@escaping (_ error:Error?,_ success:Bool)->()){
         
         loadFont("DIN_Pro_Condensed_Bold")
         loadFont("Inter-Bold")
@@ -24,8 +24,9 @@ public class AmondoSDK: NSObject {
         
         if AMDUser.currentUser() != nil {
             if AMDUser.currentUser()!.username == appID {
+				Network.shared.configure()
                 print("AMONDO_SDK: SDK already initialised")
-                return;
+				completion(nil, true)
             }
         }
         
@@ -38,8 +39,10 @@ public class AmondoSDK: NSObject {
                 AMDDefaults.Standard.setString(key: "username", value: appID)
                 AMDDefaults.Standard.setString(key: "token", value: data!.loginUser.token)
                 AMDUser.currentUser()?.token = data!.loginUser.token
+				completion(nil, true)
                 print("AMONDO_SDK: SDK successfully initialised")
             case .failure(let error):
+				completion(error, false)
                 print("AMONDO_SDK: Error initialising -"+error.localizedDescription )
             }
         }
@@ -91,6 +94,34 @@ public class AmondoSDK: NSObject {
             completionDone()
         }
     }
+	
+	public func loadTeamImprints(completion:@escaping (_ error:Error?,_ imprints:[AMDImprintItemLight]?)->()) {
+		Network.shared.configure()
+		Network.shared.apollo!.fetch(query: GetMeQuery()) { result in
+			switch result {
+			case .success(let graphQLResult):
+				do {
+					if let user = graphQLResult.data?.me {
+						let userJsondata = user.resultMap.jsonValue
+						let jsonData = try JSONSerialization.data(withJSONObject: userJsondata, options: .prettyPrinted)
+						let decoder = JSONDecoder()
+						let deserializedObject = try decoder.decode(AMDUser.self, from: jsonData)
+						AMDUser.currentUser()?.team = deserializedObject.team
+						completion(nil, deserializedObject.team?.imprints)
+					}
+
+				} catch (let err) {
+					completion(err, nil)
+					print("AMONDO_SDK: ERROR WHILE FETCHING USER DATA")
+					return
+				}
+			case .failure(let err):
+				completion(err, nil)
+				print("AMONDO_SDK: ERROR WHILE FETCHING USER DATA")
+				return
+			}
+		}
+	}
     
     public func loadSingleImprint(id:Int, completion:@escaping (_ error:Error?,_ imprint:AMDImprintItem?)->()){
         Network.shared.configure()
@@ -116,7 +147,7 @@ public class AmondoSDK: NSObject {
             }
         }
     }
-    
+	
     public func loadAllImprints(completion:@escaping (_ error:Error?,_ imprints:[AMDImprintItem]?)->()){
         Network.shared.configure()
         Network.shared.apollo!.fetch(query: GetImprintsQuery()) { result in

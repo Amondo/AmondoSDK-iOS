@@ -533,7 +533,7 @@ class AMDQuery: NSObject {
 
         men.event = event
 
-        men.contributed = AMDUser.currentUser()!.contributedEvents.contains(men.objectID())
+		men.contributed = ((AMDUser.currentUser()!.contributedEvents?.contains(men.objectID())) != nil)
         if men.contributed {
             let end = (object["endDate"] as! String).dateFromPostgresString()
             let start = (object["startDate"] as! String).dateFromPostgresString()
@@ -541,8 +541,8 @@ class AMDQuery: NSObject {
 
             men.contributedAssetsCount = Int(count)
         }
-        men.notified = AMDUser.currentUser()!.notifiedEvents.contains(men.objectID())
-        men.liked = AMDUser.currentUser()!.events_users.contains(men.objectID())
+		men.notified = ((AMDUser.currentUser()!.notifiedEvents?.contains(men.objectID())) != nil)
+		men.liked = ((AMDUser.currentUser()!.events_users?.contains(men.objectID())) != nil)
 
         return men
 

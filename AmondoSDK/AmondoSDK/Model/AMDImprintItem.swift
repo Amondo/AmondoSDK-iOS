@@ -13,6 +13,56 @@ import Alamofire
 
 var curatedAssets = [AMDAsset]()
 
+public class AMDImprintItemLight: NSObject, Decodable, Encodable {
+	public var id: String!
+	public var publicId: String!
+	public var title: String!
+	
+	enum CodingKeys: String, CodingKey {
+		case publicId
+		case id
+		case title
+	}
+	
+	override init() {
+		super.init()
+	}
+	
+	public func encode(to encoder: Encoder) throws {
+		var container = encoder.container(keyedBy: CodingKeys.self)
+		try container.encode(publicId, forKey: .publicId)
+		try container.encode(id, forKey: .id)
+		try container.encode(title, forKey: .title)
+	}
+	
+	required public init(from decoder: Decoder) throws {
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		self.title = try container.decodeIfPresent(String.self, forKey: .title)
+
+		do {
+			if let id = try container.decodeIfPresent(Int.self, forKey: .id) {
+				self.id = String(id)
+			}
+
+		} catch {
+			if let stringId = try container.decodeIfPresent(String.self, forKey: .id) {
+				self.id = stringId
+			}
+		}
+		
+		do {
+			if let publicId = try container.decodeIfPresent(Int.self, forKey: .publicId) {
+				self.publicId = String(publicId)
+			}
+
+		} catch {
+			if let stringId = try container.decodeIfPresent(String.self, forKey: .publicId) {
+				self.publicId = stringId
+			}
+		}
+	}
+}
+
 public class AMDImprintItem: NSObject, Decodable {
 
     enum Status: String {
@@ -63,6 +113,7 @@ public class AMDImprintItem: NSObject, Decodable {
     enum CodingKeys: String, CodingKey {
         case status
         case id
+		case publicId
         case artist
         case slug
         case endDate
@@ -98,10 +149,10 @@ public class AMDImprintItem: NSObject, Decodable {
 
 
         if let user = AMDUser.currentUser(), let eventId = event?.id {
-            self.liked = user.events_users.contains(eventId)
-            self.contributed = user.contributedEvents.contains(eventId)
+			self.liked = ((user.events_users?.contains(eventId)) != nil)
+			self.contributed = ((user.contributedEvents?.contains(eventId)) != nil)
 
-            self.notified = user.notifiedEvents.contains(eventId)
+			self.notified = ((user.notifiedEvents?.contains(eventId)) != nil)
         }
         
         if let end = try container.decodeIfPresent(String.self, forKey: .endDate) {

@@ -1,0 +1,17 @@
+query GetMe {
+	me {
+		id
+		email
+		firstName
+		lastName
+		team {
+			id
+			name
+			imprints {
+				id
+				publicId
+				title
+			}
+		}
+	}
+}

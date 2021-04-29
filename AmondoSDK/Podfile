@@ -4,14 +4,14 @@ platform :ios, '10.0'
 target 'AmondoSDK' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-
+ 
   # Pods for AmondoSDK
 
-    pod 'Alamofire', '~> 4.4'
-    pod 'KeychainSwift'
-    pod 'Cloudinary'#, '~> 2.0'
-    pod 'Intercom'
-    pod 'FacebookShare'
+    pod 'Alamofire', '4.8.2'
+    pod 'KeychainSwift', '16.0.1'
+    pod 'Cloudinary', '2.7.0'
+    pod 'Intercom', '5.4.0'
+    pod 'FacebookShare', '0.9.0'
     pod 'Apollo', '0.18.1'
     
 end

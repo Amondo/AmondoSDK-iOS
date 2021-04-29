@@ -1,26 +1,21 @@
 query GetImprints($first: Int, $skip: Int) {
-    imprints(first: $first, skip: $skip) {
-        id
-        status
-        artist
-        startDate
-        endDate
-        createdAt
-        updatedAt
-        locationRadius
-        location
-        geoPoint {
-            latitude
-            longitude
-        }
-        image {
-          url
-          type
-          width
-          height
-          publicId
-          format
-          version
-        }
+  imprints(first: $first, skip: $skip) {
+    id
+    publicId
+    artist
+    startDate
+    endDate
+    createdAt
+    updatedAt
+    location
+    image {
+      url
+      type
+      width
+      height
+      publicId
+      format
+      version
     }
+  }
 }

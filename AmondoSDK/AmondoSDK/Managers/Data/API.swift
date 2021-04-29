@@ -49,54 +49,6 @@ public enum CloudinaryFileType: RawRepresentable, Equatable, Hashable, CaseItera
   }
 }
 
-public enum ImprintStatus: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
-  public typealias RawValue = String
-  /// Not shown in the iOS app but accessible via url
-  case hidden
-  /// Shown in the iOS app
-  case active
-  /// Shown in the iOS app and web imprint as upcoming
-  case upcoming
-  /// Auto generated constant for unknown enum values
-  case __unknown(RawValue)
-
-  public init?(rawValue: RawValue) {
-    switch rawValue {
-      case "hidden": self = .hidden
-      case "active": self = .active
-      case "upcoming": self = .upcoming
-      default: self = .__unknown(rawValue)
-    }
-  }
-
-  public var rawValue: RawValue {
-    switch self {
-      case .hidden: return "hidden"
-      case .active: return "active"
-      case .upcoming: return "upcoming"
-      case .__unknown(let value): return value
-    }
-  }
-
-  public static func == (lhs: ImprintStatus, rhs: ImprintStatus) -> Bool {
-    switch (lhs, rhs) {
-      case (.hidden, .hidden): return true
-      case (.active, .active): return true
-      case (.upcoming, .upcoming): return true
-      case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
-      default: return false
-    }
-  }
-
-  public static var allCases: [ImprintStatus] {
-    return [
-      .hidden,
-      .active,
-      .upcoming,
-    ]
-  }
-}
-
 public enum TileSource: RawRepresentable, Equatable, Hashable, CaseIterable, Apollo.JSONDecodable, Apollo.JSONEncodable {
   public typealias RawValue = String
   case instagram
@@ -104,6 +56,10 @@ public enum TileSource: RawRepresentable, Equatable, Hashable, CaseIterable, Apo
   case twitter
   case amondo
   case youTube
+  case tikTok
+  case riddle
+  case spotify
+  case paperform
   /// Auto generated constant for unknown enum values
   case __unknown(RawValue)
 
@@ -114,6 +70,10 @@ public enum TileSource: RawRepresentable, Equatable, Hashable, CaseIterable, Apo
       case "Twitter": self = .twitter
       case "Amondo": self = .amondo
       case "YouTube": self = .youTube
+      case "TikTok": self = .tikTok
+      case "Riddle": self = .riddle
+      case "Spotify": self = .spotify
+      case "Paperform": self = .paperform
       default: self = .__unknown(rawValue)
     }
   }
@@ -125,6 +85,10 @@ public enum TileSource: RawRepresentable, Equatable, Hashable, CaseIterable, Apo
       case .twitter: return "Twitter"
       case .amondo: return "Amondo"
       case .youTube: return "YouTube"
+      case .tikTok: return "TikTok"
+      case .riddle: return "Riddle"
+      case .spotify: return "Spotify"
+      case .paperform: return "Paperform"
       case .__unknown(let value): return value
     }
   }
@@ -136,6 +100,10 @@ public enum TileSource: RawRepresentable, Equatable, Hashable, CaseIterable, Apo
       case (.twitter, .twitter): return true
       case (.amondo, .amondo): return true
       case (.youTube, .youTube): return true
+      case (.tikTok, .tikTok): return true
+      case (.riddle, .riddle): return true
+      case (.spotify, .spotify): return true
+      case (.paperform, .paperform): return true
       case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
       default: return false
     }
@@ -148,6 +116,10 @@ public enum TileSource: RawRepresentable, Equatable, Hashable, CaseIterable, Apo
       .twitter,
       .amondo,
       .youTube,
+      .tikTok,
+      .riddle,
+      .spotify,
+      .paperform,
     ]
   }
 }
@@ -159,6 +131,10 @@ public enum TileType: RawRepresentable, Equatable, Hashable, CaseIterable, Apoll
   case status
   case url
   case youtube
+  case tiktok
+  case riddle
+  case spotify
+  case submission
   /// Auto generated constant for unknown enum values
   case __unknown(RawValue)
 
@@ -169,6 +145,10 @@ public enum TileType: RawRepresentable, Equatable, Hashable, CaseIterable, Apoll
       case "status": self = .status
       case "url": self = .url
       case "youtube": self = .youtube
+      case "tiktok": self = .tiktok
+      case "riddle": self = .riddle
+      case "spotify": self = .spotify
+      case "submission": self = .submission
       default: self = .__unknown(rawValue)
     }
   }
@@ -180,6 +160,10 @@ public enum TileType: RawRepresentable, Equatable, Hashable, CaseIterable, Apoll
       case .status: return "status"
       case .url: return "url"
       case .youtube: return "youtube"
+      case .tiktok: return "tiktok"
+      case .riddle: return "riddle"
+      case .spotify: return "spotify"
+      case .submission: return "submission"
       case .__unknown(let value): return value
     }
   }
@@ -191,6 +175,10 @@ public enum TileType: RawRepresentable, Equatable, Hashable, CaseIterable, Apoll
       case (.status, .status): return true
       case (.url, .url): return true
       case (.youtube, .youtube): return true
+      case (.tiktok, .tiktok): return true
+      case (.riddle, .riddle): return true
+      case (.spotify, .spotify): return true
+      case (.submission, .submission): return true
       case (.__unknown(let lhsValue), .__unknown(let rhsValue)): return lhsValue == rhsValue
       default: return false
     }
@@ -203,6 +191,10 @@ public enum TileType: RawRepresentable, Equatable, Hashable, CaseIterable, Apoll
       .status,
       .url,
       .youtube,
+      .tiktok,
+      .riddle,
+      .spotify,
+      .submission,
     ]
   }
 }
@@ -260,18 +252,13 @@ public final class GetImprintsByIdQuery: GraphQLQuery {
       imprints(where: {ids: $ids}) {
         __typename
         id
+        publicId
         artist
         startDate
         endDate
         createdAt
         updatedAt
-        locationRadius
         location
-        geoPoint {
-          __typename
-          latitude
-          longitude
-        }
         image {
           __typename
           url
@@ -288,6 +275,8 @@ public final class GetImprintsByIdQuery: GraphQLQuery {
 
   public let operationName: String = "GetImprintsById"
 
+  public let operationIdentifier: String? = "8f29c07e1aaef1e0934f83ec5e95dbdbae9da604f6d396c452d791efe1ad4c62"
+
   public var ids: [GraphQLID?]?
 
   public init(ids: [GraphQLID?]? = nil) {
@@ -301,9 +290,11 @@ public final class GetImprintsByIdQuery: GraphQLQuery {
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes: [String] = ["Query"]
 
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("imprints", arguments: ["where": ["ids": GraphQLVariable("ids")]], type: .nonNull(.list(.nonNull(.object(Imprint.selections))))),
-    ]
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("imprints", arguments: ["where": ["ids": GraphQLVariable("ids")]], type: .nonNull(.list(.nonNull(.object(Imprint.selections))))),
+      ]
+    }
 
     public private(set) var resultMap: ResultMap
 
@@ -327,19 +318,20 @@ public final class GetImprintsByIdQuery: GraphQLQuery {
     public struct Imprint: GraphQLSelectionSet {
       public static let possibleTypes: [String] = ["Imprint"]
 
-      public static let selections: [GraphQLSelection] = [
-        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
-        GraphQLField("artist", type: .nonNull(.scalar(String.self))),
-        GraphQLField("startDate", type: .scalar(String.self)),
-        GraphQLField("endDate", type: .scalar(String.self)),
-        GraphQLField("createdAt", type: .scalar(String.self)),
-        GraphQLField("updatedAt", type: .scalar(String.self)),
-        GraphQLField("locationRadius", type: .scalar(Int.self)),
-        GraphQLField("location", type: .scalar(String.self)),
-        GraphQLField("geoPoint", type: .nonNull(.object(GeoPoint.selections))),
-        GraphQLField("image", type: .object(Image.selections)),
-      ]
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("publicId", type: .scalar(Int.self)),
+          GraphQLField("artist", type: .nonNull(.scalar(String.self))),
+          GraphQLField("startDate", type: .scalar(String.self)),
+          GraphQLField("endDate", type: .scalar(String.self)),
+          GraphQLField("createdAt", type: .scalar(String.self)),
+          GraphQLField("updatedAt", type: .scalar(String.self)),
+          GraphQLField("location", type: .scalar(String.self)),
+          GraphQLField("image", type: .object(Image.selections)),
+        ]
+      }
 
       public private(set) var resultMap: ResultMap
 
@@ -347,8 +339,8 @@ public final class GetImprintsByIdQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: GraphQLID, artist: String, startDate: String? = nil, endDate: String? = nil, createdAt: String? = nil, updatedAt: String? = nil, locationRadius: Int? = nil, location: String? = nil, geoPoint: GeoPoint, image: Image? = nil) {
-        self.init(unsafeResultMap: ["__typename": "Imprint", "id": id, "artist": artist, "startDate": startDate, "endDate": endDate, "createdAt": createdAt, "updatedAt": updatedAt, "locationRadius": locationRadius, "location": location, "geoPoint": geoPoint.resultMap, "image": image.flatMap { (value: Image) -> ResultMap in value.resultMap }])
+      public init(id: GraphQLID, publicId: Int? = nil, artist: String, startDate: String? = nil, endDate: String? = nil, createdAt: String? = nil, updatedAt: String? = nil, location: String? = nil, image: Image? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Imprint", "id": id, "publicId": publicId, "artist": artist, "startDate": startDate, "endDate": endDate, "createdAt": createdAt, "updatedAt": updatedAt, "location": location, "image": image.flatMap { (value: Image) -> ResultMap in value.resultMap }])
       }
 
       public var __typename: String {
@@ -369,8 +361,17 @@ public final class GetImprintsByIdQuery: GraphQLQuery {
         }
       }
 
-      /// Title of the imprint.
-      /// Should be deprecated in favor of `title` field.
+      /// This one is common amongst different versions of Imprint, ie Imprints ID#1, 2 and 3 can have same publicId if they are versions of the same Imprint
+      public var publicId: Int? {
+        get {
+          return resultMap["publicId"] as? Int
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "publicId")
+        }
+      }
+
+      @available(*, deprecated, message: "Renamed to 'title'")
       public var artist: String {
         get {
           return resultMap["artist"]! as! String
@@ -416,15 +417,6 @@ public final class GetImprintsByIdQuery: GraphQLQuery {
         }
       }
 
-      public var locationRadius: Int? {
-        get {
-          return resultMap["locationRadius"] as? Int
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "locationRadius")
-        }
-      }
-
       public var location: String? {
         get {
           return resultMap["location"] as? String
@@ -434,15 +426,7 @@ public final class GetImprintsByIdQuery: GraphQLQuery {
         }
       }
 
-      public var geoPoint: GeoPoint {
-        get {
-          return GeoPoint(unsafeResultMap: resultMap["geoPoint"]! as! ResultMap)
-        }
-        set {
-          resultMap.updateValue(newValue.resultMap, forKey: "geoPoint")
-        }
-      }
-
+      @available(*, deprecated, message: "Renamed to 'coverImage'")
       public var image: Image? {
         get {
           return (resultMap["image"] as? ResultMap).flatMap { Image(unsafeResultMap: $0) }
@@ -452,66 +436,21 @@ public final class GetImprintsByIdQuery: GraphQLQuery {
         }
       }
 
-      public struct GeoPoint: GraphQLSelectionSet {
-        public static let possibleTypes: [String] = ["GeoPoint"]
-
-        public static let selections: [GraphQLSelection] = [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("latitude", type: .nonNull(.scalar(Double.self))),
-          GraphQLField("longitude", type: .nonNull(.scalar(Double.self))),
-        ]
-
-        public private(set) var resultMap: ResultMap
-
-        public init(unsafeResultMap: ResultMap) {
-          self.resultMap = unsafeResultMap
-        }
-
-        public init(latitude: Double, longitude: Double) {
-          self.init(unsafeResultMap: ["__typename": "GeoPoint", "latitude": latitude, "longitude": longitude])
-        }
-
-        public var __typename: String {
-          get {
-            return resultMap["__typename"]! as! String
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "__typename")
-          }
-        }
-
-        public var latitude: Double {
-          get {
-            return resultMap["latitude"]! as! Double
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "latitude")
-          }
-        }
-
-        public var longitude: Double {
-          get {
-            return resultMap["longitude"]! as! Double
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "longitude")
-          }
-        }
-      }
-
       public struct Image: GraphQLSelectionSet {
         public static let possibleTypes: [String] = ["CloudinaryFile"]
 
-        public static let selections: [GraphQLSelection] = [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("url", type: .scalar(String.self)),
-          GraphQLField("type", type: .scalar(CloudinaryFileType.self)),
-          GraphQLField("width", type: .scalar(Int.self)),
-          GraphQLField("height", type: .scalar(Int.self)),
-          GraphQLField("publicId", type: .scalar(String.self)),
-          GraphQLField("format", type: .scalar(String.self)),
-          GraphQLField("version", type: .scalar(Int.self)),
-        ]
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("url", type: .scalar(String.self)),
+            GraphQLField("type", type: .scalar(CloudinaryFileType.self)),
+            GraphQLField("width", type: .scalar(Int.self)),
+            GraphQLField("height", type: .scalar(Int.self)),
+            GraphQLField("publicId", type: .scalar(String.self)),
+            GraphQLField("format", type: .scalar(String.self)),
+            GraphQLField("version", type: .scalar(Int.self)),
+          ]
+        }
 
         public private(set) var resultMap: ResultMap
 
@@ -607,19 +546,13 @@ public final class GetImprintsQuery: GraphQLQuery {
       imprints(first: $first, skip: $skip) {
         __typename
         id
-        status
+        publicId
         artist
         startDate
         endDate
         createdAt
         updatedAt
-        locationRadius
         location
-        geoPoint {
-          __typename
-          latitude
-          longitude
-        }
         image {
           __typename
           url
@@ -636,10 +569,12 @@ public final class GetImprintsQuery: GraphQLQuery {
 
   public let operationName: String = "GetImprints"
 
-  public var first: Int? = 100
-  public var skip: Int? = 0
+  public let operationIdentifier: String? = "fd30c5b93a551de507f08e04e011e367c0c6fa1a9e2cef8a577a36f9632a0a07"
 
-  public init(first: Int? = 100, skip: Int? = 0) {
+  public var first: Int?
+  public var skip: Int?
+
+  public init(first: Int? = nil, skip: Int? = nil) {
     self.first = first
     self.skip = skip
   }
@@ -651,9 +586,11 @@ public final class GetImprintsQuery: GraphQLQuery {
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes: [String] = ["Query"]
 
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("imprints", arguments: ["first": GraphQLVariable("first"), "skip": GraphQLVariable("skip")], type: .nonNull(.list(.nonNull(.object(Imprint.selections))))),
-    ]
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("imprints", arguments: ["first": GraphQLVariable("first"), "skip": GraphQLVariable("skip")], type: .nonNull(.list(.nonNull(.object(Imprint.selections))))),
+      ]
+    }
 
     public private(set) var resultMap: ResultMap
 
@@ -677,20 +614,20 @@ public final class GetImprintsQuery: GraphQLQuery {
     public struct Imprint: GraphQLSelectionSet {
       public static let possibleTypes: [String] = ["Imprint"]
 
-      public static let selections: [GraphQLSelection] = [
-        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
-        GraphQLField("status", type: .scalar(ImprintStatus.self)),
-        GraphQLField("artist", type: .nonNull(.scalar(String.self))),
-        GraphQLField("startDate", type: .scalar(String.self)),
-        GraphQLField("endDate", type: .scalar(String.self)),
-        GraphQLField("createdAt", type: .scalar(String.self)),
-        GraphQLField("updatedAt", type: .scalar(String.self)),
-        GraphQLField("locationRadius", type: .scalar(Int.self)),
-        GraphQLField("location", type: .scalar(String.self)),
-        GraphQLField("geoPoint", type: .nonNull(.object(GeoPoint.selections))),
-        GraphQLField("image", type: .object(Image.selections)),
-      ]
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("publicId", type: .scalar(Int.self)),
+          GraphQLField("artist", type: .nonNull(.scalar(String.self))),
+          GraphQLField("startDate", type: .scalar(String.self)),
+          GraphQLField("endDate", type: .scalar(String.self)),
+          GraphQLField("createdAt", type: .scalar(String.self)),
+          GraphQLField("updatedAt", type: .scalar(String.self)),
+          GraphQLField("location", type: .scalar(String.self)),
+          GraphQLField("image", type: .object(Image.selections)),
+        ]
+      }
 
       public private(set) var resultMap: ResultMap
 
@@ -698,8 +635,8 @@ public final class GetImprintsQuery: GraphQLQuery {
         self.resultMap = unsafeResultMap
       }
 
-      public init(id: GraphQLID, status: ImprintStatus? = nil, artist: String, startDate: String? = nil, endDate: String? = nil, createdAt: String? = nil, updatedAt: String? = nil, locationRadius: Int? = nil, location: String? = nil, geoPoint: GeoPoint, image: Image? = nil) {
-        self.init(unsafeResultMap: ["__typename": "Imprint", "id": id, "status": status, "artist": artist, "startDate": startDate, "endDate": endDate, "createdAt": createdAt, "updatedAt": updatedAt, "locationRadius": locationRadius, "location": location, "geoPoint": geoPoint.resultMap, "image": image.flatMap { (value: Image) -> ResultMap in value.resultMap }])
+      public init(id: GraphQLID, publicId: Int? = nil, artist: String, startDate: String? = nil, endDate: String? = nil, createdAt: String? = nil, updatedAt: String? = nil, location: String? = nil, image: Image? = nil) {
+        self.init(unsafeResultMap: ["__typename": "Imprint", "id": id, "publicId": publicId, "artist": artist, "startDate": startDate, "endDate": endDate, "createdAt": createdAt, "updatedAt": updatedAt, "location": location, "image": image.flatMap { (value: Image) -> ResultMap in value.resultMap }])
       }
 
       public var __typename: String {
@@ -720,17 +657,17 @@ public final class GetImprintsQuery: GraphQLQuery {
         }
       }
 
-      public var status: ImprintStatus? {
+      /// This one is common amongst different versions of Imprint, ie Imprints ID#1, 2 and 3 can have same publicId if they are versions of the same Imprint
+      public var publicId: Int? {
         get {
-          return resultMap["status"] as? ImprintStatus
+          return resultMap["publicId"] as? Int
         }
         set {
-          resultMap.updateValue(newValue, forKey: "status")
+          resultMap.updateValue(newValue, forKey: "publicId")
         }
       }
 
-      /// Title of the imprint.
-      /// Should be deprecated in favor of `title` field.
+      @available(*, deprecated, message: "Renamed to 'title'")
       public var artist: String {
         get {
           return resultMap["artist"]! as! String
@@ -776,15 +713,6 @@ public final class GetImprintsQuery: GraphQLQuery {
         }
       }
 
-      public var locationRadius: Int? {
-        get {
-          return resultMap["locationRadius"] as? Int
-        }
-        set {
-          resultMap.updateValue(newValue, forKey: "locationRadius")
-        }
-      }
-
       public var location: String? {
         get {
           return resultMap["location"] as? String
@@ -794,15 +722,7 @@ public final class GetImprintsQuery: GraphQLQuery {
         }
       }
 
-      public var geoPoint: GeoPoint {
-        get {
-          return GeoPoint(unsafeResultMap: resultMap["geoPoint"]! as! ResultMap)
-        }
-        set {
-          resultMap.updateValue(newValue.resultMap, forKey: "geoPoint")
-        }
-      }
-
+      @available(*, deprecated, message: "Renamed to 'coverImage'")
       public var image: Image? {
         get {
           return (resultMap["image"] as? ResultMap).flatMap { Image(unsafeResultMap: $0) }
@@ -812,66 +732,21 @@ public final class GetImprintsQuery: GraphQLQuery {
         }
       }
 
-      public struct GeoPoint: GraphQLSelectionSet {
-        public static let possibleTypes: [String] = ["GeoPoint"]
-
-        public static let selections: [GraphQLSelection] = [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("latitude", type: .nonNull(.scalar(Double.self))),
-          GraphQLField("longitude", type: .nonNull(.scalar(Double.self))),
-        ]
-
-        public private(set) var resultMap: ResultMap
-
-        public init(unsafeResultMap: ResultMap) {
-          self.resultMap = unsafeResultMap
-        }
-
-        public init(latitude: Double, longitude: Double) {
-          self.init(unsafeResultMap: ["__typename": "GeoPoint", "latitude": latitude, "longitude": longitude])
-        }
-
-        public var __typename: String {
-          get {
-            return resultMap["__typename"]! as! String
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "__typename")
-          }
-        }
-
-        public var latitude: Double {
-          get {
-            return resultMap["latitude"]! as! Double
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "latitude")
-          }
-        }
-
-        public var longitude: Double {
-          get {
-            return resultMap["longitude"]! as! Double
-          }
-          set {
-            resultMap.updateValue(newValue, forKey: "longitude")
-          }
-        }
-      }
-
       public struct Image: GraphQLSelectionSet {
         public static let possibleTypes: [String] = ["CloudinaryFile"]
 
-        public static let selections: [GraphQLSelection] = [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("url", type: .scalar(String.self)),
-          GraphQLField("type", type: .scalar(CloudinaryFileType.self)),
-          GraphQLField("width", type: .scalar(Int.self)),
-          GraphQLField("height", type: .scalar(Int.self)),
-          GraphQLField("publicId", type: .scalar(String.self)),
-          GraphQLField("format", type: .scalar(String.self)),
-          GraphQLField("version", type: .scalar(Int.self)),
-        ]
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("url", type: .scalar(String.self)),
+            GraphQLField("type", type: .scalar(CloudinaryFileType.self)),
+            GraphQLField("width", type: .scalar(Int.self)),
+            GraphQLField("height", type: .scalar(Int.self)),
+            GraphQLField("publicId", type: .scalar(String.self)),
+            GraphQLField("format", type: .scalar(String.self)),
+            GraphQLField("version", type: .scalar(Int.self)),
+          ]
+        }
 
         public private(set) var resultMap: ResultMap
 
@@ -959,6 +834,267 @@ public final class GetImprintsQuery: GraphQLQuery {
   }
 }
 
+public final class GetMeQuery: GraphQLQuery {
+  /// The raw GraphQL definition of this operation.
+  public let operationDefinition: String =
+    """
+    query GetMe {
+      me {
+        __typename
+        id
+        email
+        firstName
+        lastName
+        team {
+          __typename
+          id
+          name
+          imprints {
+            __typename
+            id
+            publicId
+            title
+          }
+        }
+      }
+    }
+    """
+
+  public let operationName: String = "GetMe"
+
+  public let operationIdentifier: String? = "1fa064fbc7deace799e398a87fbb7325244515fa263820cdc7548f4f4f1f7a6c"
+
+  public init() {
+  }
+
+  public struct Data: GraphQLSelectionSet {
+    public static let possibleTypes: [String] = ["Query"]
+
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("me", type: .object(Me.selections)),
+      ]
+    }
+
+    public private(set) var resultMap: ResultMap
+
+    public init(unsafeResultMap: ResultMap) {
+      self.resultMap = unsafeResultMap
+    }
+
+    public init(me: Me? = nil) {
+      self.init(unsafeResultMap: ["__typename": "Query", "me": me.flatMap { (value: Me) -> ResultMap in value.resultMap }])
+    }
+
+    public var me: Me? {
+      get {
+        return (resultMap["me"] as? ResultMap).flatMap { Me(unsafeResultMap: $0) }
+      }
+      set {
+        resultMap.updateValue(newValue?.resultMap, forKey: "me")
+      }
+    }
+
+    public struct Me: GraphQLSelectionSet {
+      public static let possibleTypes: [String] = ["User"]
+
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("email", type: .nonNull(.scalar(String.self))),
+          GraphQLField("firstName", type: .scalar(String.self)),
+          GraphQLField("lastName", type: .scalar(String.self)),
+          GraphQLField("team", type: .object(Team.selections)),
+        ]
+      }
+
+      public private(set) var resultMap: ResultMap
+
+      public init(unsafeResultMap: ResultMap) {
+        self.resultMap = unsafeResultMap
+      }
+
+      public init(id: GraphQLID, email: String, firstName: String? = nil, lastName: String? = nil, team: Team? = nil) {
+        self.init(unsafeResultMap: ["__typename": "User", "id": id, "email": email, "firstName": firstName, "lastName": lastName, "team": team.flatMap { (value: Team) -> ResultMap in value.resultMap }])
+      }
+
+      public var __typename: String {
+        get {
+          return resultMap["__typename"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "__typename")
+        }
+      }
+
+      public var id: GraphQLID {
+        get {
+          return resultMap["id"]! as! GraphQLID
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "id")
+        }
+      }
+
+      public var email: String {
+        get {
+          return resultMap["email"]! as! String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "email")
+        }
+      }
+
+      public var firstName: String? {
+        get {
+          return resultMap["firstName"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "firstName")
+        }
+      }
+
+      public var lastName: String? {
+        get {
+          return resultMap["lastName"] as? String
+        }
+        set {
+          resultMap.updateValue(newValue, forKey: "lastName")
+        }
+      }
+
+      public var team: Team? {
+        get {
+          return (resultMap["team"] as? ResultMap).flatMap { Team(unsafeResultMap: $0) }
+        }
+        set {
+          resultMap.updateValue(newValue?.resultMap, forKey: "team")
+        }
+      }
+
+      public struct Team: GraphQLSelectionSet {
+        public static let possibleTypes: [String] = ["Team"]
+
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+            GraphQLField("name", type: .scalar(String.self)),
+            GraphQLField("imprints", type: .nonNull(.list(.object(Imprint.selections)))),
+          ]
+        }
+
+        public private(set) var resultMap: ResultMap
+
+        public init(unsafeResultMap: ResultMap) {
+          self.resultMap = unsafeResultMap
+        }
+
+        public init(id: GraphQLID, name: String? = nil, imprints: [Imprint?]) {
+          self.init(unsafeResultMap: ["__typename": "Team", "id": id, "name": name, "imprints": imprints.map { (value: Imprint?) -> ResultMap? in value.flatMap { (value: Imprint) -> ResultMap in value.resultMap } }])
+        }
+
+        public var __typename: String {
+          get {
+            return resultMap["__typename"]! as! String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "__typename")
+          }
+        }
+
+        public var id: GraphQLID {
+          get {
+            return resultMap["id"]! as! GraphQLID
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "id")
+          }
+        }
+
+        public var name: String? {
+          get {
+            return resultMap["name"] as? String
+          }
+          set {
+            resultMap.updateValue(newValue, forKey: "name")
+          }
+        }
+
+        public var imprints: [Imprint?] {
+          get {
+            return (resultMap["imprints"] as! [ResultMap?]).map { (value: ResultMap?) -> Imprint? in value.flatMap { (value: ResultMap) -> Imprint in Imprint(unsafeResultMap: value) } }
+          }
+          set {
+            resultMap.updateValue(newValue.map { (value: Imprint?) -> ResultMap? in value.flatMap { (value: Imprint) -> ResultMap in value.resultMap } }, forKey: "imprints")
+          }
+        }
+
+        public struct Imprint: GraphQLSelectionSet {
+          public static let possibleTypes: [String] = ["Imprint"]
+
+          public static var selections: [GraphQLSelection] {
+            return [
+              GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+              GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+              GraphQLField("publicId", type: .scalar(Int.self)),
+              GraphQLField("title", type: .nonNull(.scalar(String.self))),
+            ]
+          }
+
+          public private(set) var resultMap: ResultMap
+
+          public init(unsafeResultMap: ResultMap) {
+            self.resultMap = unsafeResultMap
+          }
+
+          public init(id: GraphQLID, publicId: Int? = nil, title: String) {
+            self.init(unsafeResultMap: ["__typename": "Imprint", "id": id, "publicId": publicId, "title": title])
+          }
+
+          public var __typename: String {
+            get {
+              return resultMap["__typename"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "__typename")
+            }
+          }
+
+          public var id: GraphQLID {
+            get {
+              return resultMap["id"]! as! GraphQLID
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "id")
+            }
+          }
+
+          /// This one is common amongst different versions of Imprint, ie Imprints ID#1, 2 and 3 can have same publicId if they are versions of the same Imprint
+          public var publicId: Int? {
+            get {
+              return resultMap["publicId"] as? Int
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "publicId")
+            }
+          }
+
+          public var title: String {
+            get {
+              return resultMap["title"]! as! String
+            }
+            set {
+              resultMap.updateValue(newValue, forKey: "title")
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 public final class GetTilesQuery: GraphQLQuery {
   /// The raw GraphQL definition of this operation.
   public let operationDefinition: String =
@@ -1008,6 +1144,8 @@ public final class GetTilesQuery: GraphQLQuery {
 
   public let operationName: String = "GetTiles"
 
+  public let operationIdentifier: String? = "df915959f641e964a06f612c9cbca498ba72526d5aa5c9fe22e9ede48f5627b1"
+
   public var imprintId: GraphQLID
 
   public init(imprintId: GraphQLID) {
@@ -1021,9 +1159,11 @@ public final class GetTilesQuery: GraphQLQuery {
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes: [String] = ["Query"]
 
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("tiles", arguments: ["imprintId": GraphQLVariable("imprintId")], type: .nonNull(.list(.nonNull(.object(Tile.selections))))),
-    ]
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("tiles", arguments: ["imprintId": GraphQLVariable("imprintId")], type: .nonNull(.list(.nonNull(.object(Tile.selections))))),
+      ]
+    }
 
     public private(set) var resultMap: ResultMap
 
@@ -1047,23 +1187,25 @@ public final class GetTilesQuery: GraphQLQuery {
     public struct Tile: GraphQLSelectionSet {
       public static let possibleTypes: [String] = ["Tile"]
 
-      public static let selections: [GraphQLSelection] = [
-        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
-        GraphQLField("username", type: .scalar(String.self)),
-        GraphQLField("url", type: .scalar(String.self)),
-        GraphQLField("location", type: .scalar(String.self)),
-        GraphQLField("description", type: .scalar(String.self)),
-        GraphQLField("likes", type: .scalar(Int.self)),
-        GraphQLField("commentCount", type: .scalar(Int.self)),
-        GraphQLField("source", type: .scalar(TileSource.self)),
-        GraphQLField("sourceId", type: .scalar(String.self)),
-        GraphQLField("type", type: .scalar(TileType.self)),
-        GraphQLField("date", type: .scalar(String.self)),
-        GraphQLField("verified", type: .scalar(Bool.self)),
-        GraphQLField("avatar", type: .object(Avatar.selections)),
-        GraphQLField("file", type: .object(File.selections)),
-      ]
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          GraphQLField("username", type: .scalar(String.self)),
+          GraphQLField("url", type: .scalar(String.self)),
+          GraphQLField("location", type: .scalar(String.self)),
+          GraphQLField("description", type: .scalar(String.self)),
+          GraphQLField("likes", type: .scalar(Int.self)),
+          GraphQLField("commentCount", type: .scalar(Int.self)),
+          GraphQLField("source", type: .scalar(TileSource.self)),
+          GraphQLField("sourceId", type: .scalar(String.self)),
+          GraphQLField("type", type: .scalar(TileType.self)),
+          GraphQLField("date", type: .scalar(String.self)),
+          GraphQLField("verified", type: .scalar(Bool.self)),
+          GraphQLField("avatar", type: .object(Avatar.selections)),
+          GraphQLField("file", type: .object(File.selections)),
+        ]
+      }
 
       public private(set) var resultMap: ResultMap
 
@@ -1093,8 +1235,7 @@ public final class GetTilesQuery: GraphQLQuery {
         }
       }
 
-      /// Username of a Social Platform user without the `@` part, eg `amondo` for
-      /// `@amondo` account. For custom uploads, use this, rather than `realname`
+      /// Username of a Social Platform user without the `@` part, eg `amondo` for `@amondo` account. For custom uploads, use this, rather than `realname`
       public var username: String? {
         get {
           return resultMap["username"] as? String
@@ -1104,6 +1245,7 @@ public final class GetTilesQuery: GraphQLQuery {
         }
       }
 
+      @available(*, deprecated, message: "Renamed to `source_url`")
       public var url: String? {
         get {
           return resultMap["url"] as? String
@@ -1122,7 +1264,6 @@ public final class GetTilesQuery: GraphQLQuery {
         }
       }
 
-      /// Caption
       public var description: String? {
         get {
           return resultMap["description"] as? String
@@ -1132,7 +1273,7 @@ public final class GetTilesQuery: GraphQLQuery {
         }
       }
 
-      /// Number of likes on original social network
+      @available(*, deprecated, message: "Renamed to `like_count`")
       public var likes: Int? {
         get {
           return resultMap["likes"] as? Int
@@ -1180,6 +1321,7 @@ public final class GetTilesQuery: GraphQLQuery {
         }
       }
 
+      @available(*, deprecated, message: "Renamed to `posted_at`")
       public var date: String? {
         get {
           return resultMap["date"] as? String
@@ -1199,7 +1341,6 @@ public final class GetTilesQuery: GraphQLQuery {
         }
       }
 
-      /// Avatar image from the tile creator on original social network
       public var avatar: Avatar? {
         get {
           return (resultMap["avatar"] as? ResultMap).flatMap { Avatar(unsafeResultMap: $0) }
@@ -1209,7 +1350,7 @@ public final class GetTilesQuery: GraphQLQuery {
         }
       }
 
-      /// Tile Media
+      @available(*, deprecated, message: "Renamed to `media`")
       public var file: File? {
         get {
           return (resultMap["file"] as? ResultMap).flatMap { File(unsafeResultMap: $0) }
@@ -1222,18 +1363,20 @@ public final class GetTilesQuery: GraphQLQuery {
       public struct Avatar: GraphQLSelectionSet {
         public static let possibleTypes: [String] = ["CloudinaryFile"]
 
-        public static let selections: [GraphQLSelection] = [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("width", type: .scalar(Int.self)),
-          GraphQLField("height", type: .scalar(Int.self)),
-          GraphQLField("secureUrl", type: .scalar(String.self)),
-          GraphQLField("resourceType", type: .scalar(CloudinaryResourceType.self)),
-          GraphQLField("type", type: .scalar(CloudinaryFileType.self)),
-          GraphQLField("version", type: .scalar(Int.self)),
-          GraphQLField("publicId", type: .scalar(String.self)),
-          GraphQLField("format", type: .scalar(String.self)),
-          GraphQLField("originalUrl", type: .scalar(String.self)),
-        ]
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("width", type: .scalar(Int.self)),
+            GraphQLField("height", type: .scalar(Int.self)),
+            GraphQLField("secureUrl", type: .scalar(String.self)),
+            GraphQLField("resourceType", type: .scalar(CloudinaryResourceType.self)),
+            GraphQLField("type", type: .scalar(CloudinaryFileType.self)),
+            GraphQLField("version", type: .scalar(Int.self)),
+            GraphQLField("publicId", type: .scalar(String.self)),
+            GraphQLField("format", type: .scalar(String.self)),
+            GraphQLField("originalUrl", type: .scalar(String.self)),
+          ]
+        }
 
         public private(set) var resultMap: ResultMap
 
@@ -1339,18 +1482,20 @@ public final class GetTilesQuery: GraphQLQuery {
       public struct File: GraphQLSelectionSet {
         public static let possibleTypes: [String] = ["CloudinaryFile"]
 
-        public static let selections: [GraphQLSelection] = [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("width", type: .scalar(Int.self)),
-          GraphQLField("height", type: .scalar(Int.self)),
-          GraphQLField("secureUrl", type: .scalar(String.self)),
-          GraphQLField("resourceType", type: .scalar(CloudinaryResourceType.self)),
-          GraphQLField("type", type: .scalar(CloudinaryFileType.self)),
-          GraphQLField("version", type: .scalar(Int.self)),
-          GraphQLField("publicId", type: .scalar(String.self)),
-          GraphQLField("format", type: .scalar(String.self)),
-          GraphQLField("originalUrl", type: .scalar(String.self)),
-        ]
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("width", type: .scalar(Int.self)),
+            GraphQLField("height", type: .scalar(Int.self)),
+            GraphQLField("secureUrl", type: .scalar(String.self)),
+            GraphQLField("resourceType", type: .scalar(CloudinaryResourceType.self)),
+            GraphQLField("type", type: .scalar(CloudinaryFileType.self)),
+            GraphQLField("version", type: .scalar(Int.self)),
+            GraphQLField("publicId", type: .scalar(String.self)),
+            GraphQLField("format", type: .scalar(String.self)),
+            GraphQLField("originalUrl", type: .scalar(String.self)),
+          ]
+        }
 
         public private(set) var resultMap: ResultMap
 
@@ -1474,6 +1619,8 @@ public final class LoginMutation: GraphQLMutation {
 
   public let operationName: String = "Login"
 
+  public let operationIdentifier: String? = "c7e8e55721414948e02ea09710ab15f49e285c20bec52646d4d31b78b57937d0"
+
   public var email: String
   public var password: String
 
@@ -1489,9 +1636,11 @@ public final class LoginMutation: GraphQLMutation {
   public struct Data: GraphQLSelectionSet {
     public static let possibleTypes: [String] = ["Mutation"]
 
-    public static let selections: [GraphQLSelection] = [
-      GraphQLField("loginUser", arguments: ["email": GraphQLVariable("email"), "password": GraphQLVariable("password")], type: .nonNull(.object(LoginUser.selections))),
-    ]
+    public static var selections: [GraphQLSelection] {
+      return [
+        GraphQLField("loginUser", arguments: ["email": GraphQLVariable("email"), "password": GraphQLVariable("password")], type: .nonNull(.object(LoginUser.selections))),
+      ]
+    }
 
     public private(set) var resultMap: ResultMap
 
@@ -1516,11 +1665,13 @@ public final class LoginMutation: GraphQLMutation {
     public struct LoginUser: GraphQLSelectionSet {
       public static let possibleTypes: [String] = ["AuthSuccess"]
 
-      public static let selections: [GraphQLSelection] = [
-        GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-        GraphQLField("token", type: .nonNull(.scalar(String.self))),
-        GraphQLField("user", type: .nonNull(.object(User.selections))),
-      ]
+      public static var selections: [GraphQLSelection] {
+        return [
+          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+          GraphQLField("token", type: .nonNull(.scalar(String.self))),
+          GraphQLField("user", type: .nonNull(.object(User.selections))),
+        ]
+      }
 
       public private(set) var resultMap: ResultMap
 
@@ -1541,7 +1692,7 @@ public final class LoginMutation: GraphQLMutation {
         }
       }
 
-      /// JWT Token
+      /// Session code
       public var token: String {
         get {
           return resultMap["token"]! as! String
@@ -1563,10 +1714,12 @@ public final class LoginMutation: GraphQLMutation {
       public struct User: GraphQLSelectionSet {
         public static let possibleTypes: [String] = ["User"]
 
-        public static let selections: [GraphQLSelection] = [
-          GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
-          GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
-        ]
+        public static var selections: [GraphQLSelection] {
+          return [
+            GraphQLField("__typename", type: .nonNull(.scalar(String.self))),
+            GraphQLField("id", type: .nonNull(.scalar(GraphQLID.self))),
+          ]
+        }
 
         public private(set) var resultMap: ResultMap
 

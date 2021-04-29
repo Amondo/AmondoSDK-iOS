@@ -68,7 +68,7 @@ extension EventCollectionViewCell {
             imageViewArtist.image = item.image
         }
         
-        item.notified = AMDUser.currentUser()!.notifiedEvents.contains(item.objectID())
+		item.notified = ((AMDUser.currentUser()!.notifiedEvents?.contains(item.objectID())) != nil)
         
         if item.status == .upcoming {
             buttonAction.isUserInteractionEnabled = false            
@@ -78,7 +78,7 @@ extension EventCollectionViewCell {
             buttonAction.imageEdgeInsets = UIEdgeInsets(top: 9, left: 9, bottom: 9, right: 9)
         } else {
             buttonAction.isUserInteractionEnabled = true
-            buttonAction.isSelected = AMDUser.currentUser()!.events_users.contains(item.objectID())
+			buttonAction.isSelected = ((AMDUser.currentUser()!.events_users?.contains(item.objectID())) != nil)
             buttonAction.setImage(UIImage(named:"favourite-selected"), for: .selected)
             buttonAction.setImage(UIImage(named:"favourite"), for: .normal)
             buttonAction.imageEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)

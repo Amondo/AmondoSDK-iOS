@@ -1,5 +1,5 @@
 query GetTiles($imprintId: ID!) {
-    tiles(imprintId: $imprintId){
+    tiles(imprintId: $imprintId, where:{deleted:false}){
         id
         username
         url

@@ -1100,7 +1100,7 @@ public final class GetTilesQuery: GraphQLQuery {
   public let operationDefinition: String =
     """
     query GetTiles($imprintId: ID!) {
-      tiles(imprintId: $imprintId) {
+      tiles(imprintId: $imprintId, where: {deleted: false}) {
         __typename
         id
         username
@@ -1144,7 +1144,7 @@ public final class GetTilesQuery: GraphQLQuery {
 
   public let operationName: String = "GetTiles"
 
-  public let operationIdentifier: String? = "df915959f641e964a06f612c9cbca498ba72526d5aa5c9fe22e9ede48f5627b1"
+  public let operationIdentifier: String? = "9ad1b26969102dff936f6ad2a71ff4d6e4de14d544374324e0340e57de701473"
 
   public var imprintId: GraphQLID
 
@@ -1161,7 +1161,7 @@ public final class GetTilesQuery: GraphQLQuery {
 
     public static var selections: [GraphQLSelection] {
       return [
-        GraphQLField("tiles", arguments: ["imprintId": GraphQLVariable("imprintId")], type: .nonNull(.list(.nonNull(.object(Tile.selections))))),
+        GraphQLField("tiles", arguments: ["imprintId": GraphQLVariable("imprintId"), "where": ["deleted": false]], type: .nonNull(.list(.nonNull(.object(Tile.selections))))),
       ]
     }
 
